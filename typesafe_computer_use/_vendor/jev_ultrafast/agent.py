@@ -5,7 +5,7 @@ import time
 from pathlib import Path
 
 from .browser import Browser, StalePage
-from .model import action_space, choose, field_context, field_text
+from .model import action_space, choose, field_context, field_text, recovery_focus, review_completion
 from .questions import MAX_STEPS
 
 
@@ -82,6 +82,44 @@ class Agent:
                     "elapsed_ms": round((time.perf_counter() - state["started_at"]) * 1000),
                 }
             )
+            uncertain = state["decision"].get("target_confidence") is not None and state["decision"]["target_confidence"] < 0.6
+            recent = state["history"][-4:]
+            cycling = (len(recent) == 4 and len({(h["action"], h.get("text")) for h in recent}) <= 2) or (
+                len(recent) >= 2 and all(h["page_changed"] is False for h in recent[-2:])
+            )
+            if (
+                state["decision"]["choice"] not in {"DONE", "BLOCKED"}
+                and (uncertain or cycling)
+                and len(state.get("recovery_calls", [])) < 3
+            ):
+                try:
+                    focus, helper = recovery_focus(state["page"], state["goal"], state["history"])
+                except (RuntimeError, ValueError) as exc:
+                    # Recovery is optional. Preserve the validated Jev choice if guidance is unavailable.
+                    state.setdefault("recovery_calls", []).append({"error_type": type(exc).__name__, "focus": None})
+                else:
+                    state.setdefault("recovery_calls", []).append({**helper, "focus": focus})
+                    if focus:
+                        state["decision"] = choose(
+                            state["page"], state["goal"] + "\nNext-step guidance: " + focus, state["history"]
+                        )
+                        state["decisions"].append(
+                            {
+                                **state["decision"],
+                                "recovery": True,
+                                "fingerprint": state["page"]["fingerprint"],
+                                "elapsed_ms": round((time.perf_counter() - state["started_at"]) * 1000),
+                            }
+                        )
+            if state["decision"]["choice"] == "DONE":
+                state["decision"] = review_completion(state["page"], state["goal"], state["history"])
+                state["decisions"].append(
+                    {
+                        **state["decision"],
+                        "fingerprint": state["page"]["fingerprint"],
+                        "elapsed_ms": round((time.perf_counter() - state["started_at"]) * 1000),
+                    }
+                )
             state["status"] = "predicted"
         elif name == "act":
             decision, page = state["decision"], state["page"]
@@ -104,7 +142,7 @@ class Agent:
                 raise ValueError(f"Stopped at the {MAX_STEPS}-action demo budget")
             text, helper = None, None
             if action["kind"] == "fill":
-                if not state["browser"].fresh(page):
+                if not state["browser"].fresh(page, action):
                     raise StalePage("Page changed before text generation. Choose again.")
                 context = field_context(state["goal"], action, page, state["history"])
                 if self.pending_text and self.pending_text[0] == context:

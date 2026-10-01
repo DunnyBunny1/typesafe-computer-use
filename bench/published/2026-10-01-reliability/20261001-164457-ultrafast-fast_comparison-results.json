@@ -1,0 +1,14 @@
+[
+  {
+    "task": "form-sequence-2",
+    "seed": 88008,
+    "pass": true,
+    "goal": "Check the 1st radio button and enter the number \"24\" into the 1st textbox.",
+    "outcome": "environment_terminated",
+    "steps": 3,
+    "done": true,
+    "raw_reward": 1,
+    "reward": 0.985175,
+    "total_ms": 2543.4
+  }
+]

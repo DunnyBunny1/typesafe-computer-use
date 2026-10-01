@@ -1,0 +1,1382 @@
+{
+  "runs": [
+    {
+      "id": "20261001-164336-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability",
+      "source_set": "0cf623ca17e81185",
+      "cases": 12,
+      "passed": 11,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 1.63305,
+      "p95_seconds": 2.0726999999999998,
+      "max_seconds": 2.0726999999999998,
+      "total_seconds": 18.6429,
+      "failed_cases": [
+        {
+          "task": "form-sequence-2",
+          "seed": 88008
+        }
+      ],
+      "recovery_hints": 0,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0"
+      ],
+      "reported_text_cost_usd": 0.0001642
+    },
+    {
+      "id": "20261001-164457-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability",
+      "source_set": "848a0d0d398265fa",
+      "cases": 1,
+      "passed": 1,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 2.5434,
+      "p95_seconds": 2.5434,
+      "max_seconds": 2.5434,
+      "total_seconds": 2.5434,
+      "failed_cases": [],
+      "recovery_hints": 0,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0"
+      ],
+      "reported_text_cost_usd": 3.109e-05
+    },
+    {
+      "id": "20261001-164526-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability",
+      "source_set": "f6ee2fbf6388b6ac",
+      "cases": 12,
+      "passed": 10,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 1.7000000000000002,
+      "p95_seconds": 121.0951,
+      "max_seconds": 121.0951,
+      "total_seconds": 148.7938,
+      "failed_cases": [
+        {
+          "task": "search-engine",
+          "seed": 88008
+        },
+        {
+          "task": "use-autocomplete-nodelay",
+          "seed": 88008
+        }
+      ],
+      "recovery_hints": 0,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0"
+      ],
+      "reported_text_cost_usd": 0.00015871
+    },
+    {
+      "id": "20261001-164813-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability",
+      "source_set": "7d041fe9b2f08873",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 1.7812999999999999,
+      "p95_seconds": 8.580200000000001,
+      "max_seconds": 8.580200000000001,
+      "total_seconds": 27.2803,
+      "failed_cases": [],
+      "recovery_hints": 5,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0"
+      ],
+      "reported_text_cost_usd": 0.00045897000000000006
+    },
+    {
+      "id": "20261001-164859-ultrafast-fast_reliability",
+      "stage": "ultrafast-reliability",
+      "source_set": "7d041fe9b2f08873",
+      "cases": 24,
+      "passed": 22,
+      "seeds": [
+        88009,
+        88010
+      ],
+      "median_seconds": 1.7009500000000002,
+      "p95_seconds": 11.3771,
+      "max_seconds": 121.1208,
+      "total_seconds": 171.4053,
+      "failed_cases": [
+        {
+          "task": "search-engine",
+          "seed": 88010
+        },
+        {
+          "task": "form-sequence-2",
+          "seed": 88009
+        }
+      ],
+      "recovery_hints": 9,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0"
+      ],
+      "reported_text_cost_usd": 0.00075963
+    },
+    {
+      "id": "20261001-165210-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability-final",
+      "source_set": "87c46b77a4d8ce8c",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 1.7626,
+      "p95_seconds": 4.611,
+      "max_seconds": 4.611,
+      "total_seconds": 24.910700000000006,
+      "failed_cases": [],
+      "recovery_hints": 4,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0014633800000000002
+    },
+    {
+      "id": "20261001-165236-ultrafast-fast_reliability",
+      "stage": "ultrafast-reliability-final",
+      "source_set": "87c46b77a4d8ce8c",
+      "cases": 24,
+      "passed": 21,
+      "seeds": [
+        88009,
+        88010
+      ],
+      "median_seconds": 1.7031,
+      "p95_seconds": 6.3411,
+      "max_seconds": 10.1023,
+      "total_seconds": 53.6667,
+      "failed_cases": [
+        {
+          "task": "search-engine",
+          "seed": 88009
+        },
+        {
+          "task": "search-engine",
+          "seed": 88010
+        },
+        {
+          "task": "use-autocomplete-nodelay",
+          "seed": 88009
+        }
+      ],
+      "recovery_hints": 6,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0020880699999999996
+    },
+    {
+      "id": "20261001-165331-ultrafast-fast_transfer",
+      "stage": "ultrafast-reliability-final",
+      "source_set": "87c46b77a4d8ce8c",
+      "cases": 20,
+      "passed": 13,
+      "seeds": [
+        88011
+      ],
+      "median_seconds": 1.5514000000000001,
+      "p95_seconds": 7.1766000000000005,
+      "max_seconds": 9.913200000000002,
+      "total_seconds": 53.13400000000001,
+      "failed_cases": [
+        {
+          "task": "click-tab-2-easy",
+          "seed": 88011
+        },
+        {
+          "task": "find-word",
+          "seed": 88011
+        },
+        {
+          "task": "navigate-tree",
+          "seed": 88011
+        },
+        {
+          "task": "number-checkboxes",
+          "seed": 88011
+        },
+        {
+          "task": "click-collapsible-2",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence-3",
+          "seed": 88011
+        }
+      ],
+      "recovery_hints": 6,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00374251
+    },
+    {
+      "id": "20261001-165543-ultrafast-fast_reliability",
+      "stage": "ultrafast-reliability-second",
+      "source_set": "d49304f191bf2cda",
+      "cases": 24,
+      "passed": 23,
+      "seeds": [
+        88009,
+        88010
+      ],
+      "median_seconds": 1.8455,
+      "p95_seconds": 10.4125,
+      "max_seconds": 11.9058,
+      "total_seconds": 77.15339999999999,
+      "failed_cases": [
+        {
+          "task": "click-dialog",
+          "seed": 88009
+        }
+      ],
+      "recovery_hints": 14,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.009149639999999999
+    },
+    {
+      "id": "20261001-165707-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability-shipping",
+      "source_set": "d49304f191bf2cda",
+      "cases": 12,
+      "passed": 11,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 2.1068,
+      "p95_seconds": 11.1881,
+      "max_seconds": 11.1881,
+      "total_seconds": 32.0518,
+      "failed_cases": [
+        {
+          "task": "search-engine",
+          "seed": 88008
+        }
+      ],
+      "recovery_hints": 4,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00244174
+    },
+    {
+      "id": "20261001-165741-ultrafast-fast_transfer",
+      "stage": "ultrafast-reliability-shipping",
+      "source_set": "d49304f191bf2cda",
+      "cases": 20,
+      "passed": 16,
+      "seeds": [
+        88011
+      ],
+      "median_seconds": 1.68975,
+      "p95_seconds": 6.389600000000001,
+      "max_seconds": 13.4665,
+      "total_seconds": 59.0732,
+      "failed_cases": [
+        {
+          "task": "number-checkboxes",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence-3",
+          "seed": 88011
+        },
+        {
+          "task": "multi-orderings",
+          "seed": 88011
+        }
+      ],
+      "recovery_hints": 9,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.006893529999999997
+    },
+    {
+      "id": "20261001-165841-ultrafast-fast_final_unseen",
+      "stage": "ultrafast-reliability-shipping",
+      "source_set": "d49304f191bf2cda",
+      "cases": 12,
+      "passed": 11,
+      "seeds": [
+        88012
+      ],
+      "median_seconds": 1.9885000000000002,
+      "p95_seconds": 6.9638,
+      "max_seconds": 6.9638,
+      "total_seconds": 32.8648,
+      "failed_cases": [
+        {
+          "task": "search-engine",
+          "seed": 88012
+        }
+      ],
+      "recovery_hints": 8,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00520559
+    },
+    {
+      "id": "20261001-165949-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability-ordinal",
+      "source_set": "48ed354979b1baef",
+      "cases": 1,
+      "passed": 1,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 3.7325999999999997,
+      "p95_seconds": 3.7325999999999997,
+      "max_seconds": 3.7325999999999997,
+      "total_seconds": 3.7325999999999997,
+      "failed_cases": [],
+      "recovery_hints": 1,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00053321
+    },
+    {
+      "id": "20261001-165954-ultrafast-fast_reliability",
+      "stage": "ultrafast-reliability-ordinal",
+      "source_set": "48ed354979b1baef",
+      "cases": 2,
+      "passed": 2,
+      "seeds": [
+        88009,
+        88010
+      ],
+      "median_seconds": 3.64135,
+      "p95_seconds": 4.6467,
+      "max_seconds": 4.6467,
+      "total_seconds": 7.2827,
+      "failed_cases": [],
+      "recovery_hints": 1,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00062961
+    },
+    {
+      "id": "20261001-170003-ultrafast-fast_final_unseen",
+      "stage": "ultrafast-reliability-ordinal",
+      "source_set": "48ed354979b1baef",
+      "cases": 1,
+      "passed": 1,
+      "seeds": [
+        88012
+      ],
+      "median_seconds": 3.658,
+      "p95_seconds": 3.658,
+      "max_seconds": 3.658,
+      "total_seconds": 3.658,
+      "failed_cases": [],
+      "recovery_hints": 1,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00055513
+    },
+    {
+      "id": "20261001-170045-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability-acceptance",
+      "source_set": "8144b51ae83a808e",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 1.7810000000000001,
+      "p95_seconds": 7.389,
+      "max_seconds": 7.389,
+      "total_seconds": 27.747399999999995,
+      "failed_cases": [],
+      "recovery_hints": 5,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00422566
+    },
+    {
+      "id": "20261001-170114-ultrafast-fast_reliability",
+      "stage": "ultrafast-reliability-acceptance",
+      "source_set": "8144b51ae83a808e",
+      "cases": 24,
+      "passed": 24,
+      "seeds": [
+        88009,
+        88010
+      ],
+      "median_seconds": 1.9884500000000003,
+      "p95_seconds": 6.4047,
+      "max_seconds": 6.8378000000000005,
+      "total_seconds": 55.3693,
+      "failed_cases": [],
+      "recovery_hints": 8,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00576692
+    },
+    {
+      "id": "20261001-170210-ultrafast-fast_transfer",
+      "stage": "ultrafast-reliability-acceptance",
+      "source_set": "8144b51ae83a808e",
+      "cases": 20,
+      "passed": 17,
+      "seeds": [
+        88011
+      ],
+      "median_seconds": 1.8975,
+      "p95_seconds": 7.5791,
+      "max_seconds": 13.398700000000002,
+      "total_seconds": 58.31620000000001,
+      "failed_cases": [
+        {
+          "task": "number-checkboxes",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence-3",
+          "seed": 88011
+        }
+      ],
+      "recovery_hints": 8,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.006013160000000001
+    },
+    {
+      "id": "20261001-170310-ultrafast-fast_prospective",
+      "stage": "ultrafast-reliability-acceptance",
+      "source_set": "8144b51ae83a808e",
+      "cases": 12,
+      "passed": 11,
+      "seeds": [
+        88013
+      ],
+      "median_seconds": 1.6345,
+      "p95_seconds": 6.9292,
+      "max_seconds": 6.9292,
+      "total_seconds": 32.8256,
+      "failed_cases": [
+        {
+          "task": "search-engine",
+          "seed": 88013
+        }
+      ],
+      "recovery_hints": 10,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00447799
+    },
+    {
+      "id": "20261001-170516-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability-verified",
+      "source_set": "f628154e85e8d7a6",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 2.2366,
+      "p95_seconds": 5.8957,
+      "max_seconds": 5.8957,
+      "total_seconds": 26.332299999999996,
+      "failed_cases": [],
+      "recovery_hints": 4,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00306976
+    },
+    {
+      "id": "20261001-170543-ultrafast-fast_reliability",
+      "stage": "ultrafast-reliability-verified",
+      "source_set": "f628154e85e8d7a6",
+      "cases": 24,
+      "passed": 24,
+      "seeds": [
+        88009,
+        88010
+      ],
+      "median_seconds": 1.7759999999999998,
+      "p95_seconds": 6.9815,
+      "max_seconds": 9.308200000000001,
+      "total_seconds": 57.1626,
+      "failed_cases": [],
+      "recovery_hints": 10,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00521024
+    },
+    {
+      "id": "20261001-170642-ultrafast-fast_transfer",
+      "stage": "ultrafast-reliability-verified",
+      "source_set": "f628154e85e8d7a6",
+      "cases": 20,
+      "passed": 17,
+      "seeds": [
+        88011
+      ],
+      "median_seconds": 2.01015,
+      "p95_seconds": 7.482600000000001,
+      "max_seconds": 12.3523,
+      "total_seconds": 63.43679999999999,
+      "failed_cases": [
+        {
+          "task": "number-checkboxes",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence-3",
+          "seed": 88011
+        }
+      ],
+      "recovery_hints": 10,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.006412179999999999
+    },
+    {
+      "id": "20261001-170746-ultrafast-fast_prospective",
+      "stage": "ultrafast-reliability-verified",
+      "source_set": "f628154e85e8d7a6",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88013
+      ],
+      "median_seconds": 2.8529999999999998,
+      "p95_seconds": 14.312899999999999,
+      "max_seconds": 14.312899999999999,
+      "total_seconds": 54.8932,
+      "failed_cases": [],
+      "recovery_hints": 9,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0035661000000000004
+    },
+    {
+      "id": "20261001-170911-ultrafast-fast_holdout",
+      "stage": "ultrafast-reliability-holdout",
+      "source_set": "f628154e85e8d7a6",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88014
+      ],
+      "median_seconds": 1.74565,
+      "p95_seconds": 4.9422,
+      "max_seconds": 4.9422,
+      "total_seconds": 24.034699999999997,
+      "failed_cases": [],
+      "recovery_hints": 2,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0015715200000000003
+    },
+    {
+      "id": "20261001-171758-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability-reviewed",
+      "source_set": "8463ae12a12f2f04",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 1.65435,
+      "p95_seconds": 6.6212,
+      "max_seconds": 6.6212,
+      "total_seconds": 25.3315,
+      "failed_cases": [],
+      "recovery_hints": 4,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0023298299999999997
+    },
+    {
+      "id": "20261001-171848-ultrafast-fast_comparison",
+      "stage": "ultrafast-reliability-release",
+      "source_set": "70abe41a732934f8",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88008
+      ],
+      "median_seconds": 1.97385,
+      "p95_seconds": 10.0562,
+      "max_seconds": 10.0562,
+      "total_seconds": 30.4408,
+      "failed_cases": [],
+      "recovery_hints": 2,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0010568
+    },
+    {
+      "id": "20261001-171922-ultrafast-fast_reliability",
+      "stage": "ultrafast-reliability-release",
+      "source_set": "70abe41a732934f8",
+      "cases": 24,
+      "passed": 24,
+      "seeds": [
+        88009,
+        88010
+      ],
+      "median_seconds": 1.8035,
+      "p95_seconds": 6.0283,
+      "max_seconds": 7.3282,
+      "total_seconds": 60.899800000000006,
+      "failed_cases": [],
+      "recovery_hints": 11,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00509797
+    },
+    {
+      "id": "20261001-172025-ultrafast-fast_transfer",
+      "stage": "ultrafast-reliability-release",
+      "source_set": "70abe41a732934f8",
+      "cases": 20,
+      "passed": 17,
+      "seeds": [
+        88011
+      ],
+      "median_seconds": 1.8038,
+      "p95_seconds": 7.3443000000000005,
+      "max_seconds": 13.7115,
+      "total_seconds": 69.53190000000001,
+      "failed_cases": [
+        {
+          "task": "number-checkboxes",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence",
+          "seed": 88011
+        },
+        {
+          "task": "form-sequence-3",
+          "seed": 88011
+        }
+      ],
+      "recovery_hints": 10,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0047757599999999996
+    },
+    {
+      "id": "20261001-172135-ultrafast-fast_prospective",
+      "stage": "ultrafast-reliability-release",
+      "source_set": "70abe41a732934f8",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88013
+      ],
+      "median_seconds": 1.7278,
+      "p95_seconds": 6.678100000000001,
+      "max_seconds": 6.678100000000001,
+      "total_seconds": 31.614700000000003,
+      "failed_cases": [],
+      "recovery_hints": 9,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.0030182800000000004
+    },
+    {
+      "id": "20261001-172208-ultrafast-fast_holdout",
+      "stage": "ultrafast-reliability-release",
+      "source_set": "70abe41a732934f8",
+      "cases": 12,
+      "passed": 12,
+      "seeds": [
+        88014
+      ],
+      "median_seconds": 2.1587500000000004,
+      "p95_seconds": 3.2767,
+      "max_seconds": 3.2767,
+      "total_seconds": 24.3326,
+      "failed_cases": [],
+      "recovery_hints": 2,
+      "models": [
+        "inception/mercury-2.5",
+        "jev-1.13.0",
+        "openai/gpt-4.1-mini"
+      ],
+      "reported_text_cost_usd": 0.00084943
+    }
+  ],
+  "source_sets": {
+    "0cf623ca17e81185": {
+      "typesafe_computer_use/__init__.py": "f8ec4e395ea17ef1f731798e51c1e8ef63202ff5cde867fdd078c35d85aa61d2",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "2316c50bcdb0e5b30e8778f98a980108cc447fa9f4e2536f5089445016baec49",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "cd91a52f162b8d0faaa84f14a049f1927566f49516cfaaaafb3f8753b7e56b11",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "a83180f0fa02d25fb6f1292d6d01d5a01de25efc1dba227f488319f0c70d863e",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "44e7f5e746233b27f594775c1b9cc7d9c3322bedbb833e90d02960c2ea89a61c",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "b1aaf3cceab018d7f8207678cb4b63af33559c59868c11938f3a02f76afca1c3",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "86995f7f56e5f3217050a21531a75c3df68fb17c911449924e4587e5294ab6a6",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "848a0d0d398265fa": {
+      "typesafe_computer_use/__init__.py": "f8ec4e395ea17ef1f731798e51c1e8ef63202ff5cde867fdd078c35d85aa61d2",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "455427fbe9c0096c931a64ba2a3794bf588582c481e47f74d1fa561d5dcbe0dd",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "cd91a52f162b8d0faaa84f14a049f1927566f49516cfaaaafb3f8753b7e56b11",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "6e57b999a7336dd51ebead4c510b1bbbbcf43c9b2d53a6e296cc5f444d89de89",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "44e7f5e746233b27f594775c1b9cc7d9c3322bedbb833e90d02960c2ea89a61c",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "b1aaf3cceab018d7f8207678cb4b63af33559c59868c11938f3a02f76afca1c3",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "86995f7f56e5f3217050a21531a75c3df68fb17c911449924e4587e5294ab6a6",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "f6ee2fbf6388b6ac": {
+      "typesafe_computer_use/__init__.py": "f8ec4e395ea17ef1f731798e51c1e8ef63202ff5cde867fdd078c35d85aa61d2",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "455427fbe9c0096c931a64ba2a3794bf588582c481e47f74d1fa561d5dcbe0dd",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "cd91a52f162b8d0faaa84f14a049f1927566f49516cfaaaafb3f8753b7e56b11",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "b12508abecc889910d01ae96de2679a165cf930f08cc89c37f4e56f7d2a63114",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "44e7f5e746233b27f594775c1b9cc7d9c3322bedbb833e90d02960c2ea89a61c",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "b1aaf3cceab018d7f8207678cb4b63af33559c59868c11938f3a02f76afca1c3",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "86995f7f56e5f3217050a21531a75c3df68fb17c911449924e4587e5294ab6a6",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "7d041fe9b2f08873": {
+      "typesafe_computer_use/__init__.py": "f8ec4e395ea17ef1f731798e51c1e8ef63202ff5cde867fdd078c35d85aa61d2",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "60709773bd919e069174393759ded20a1c8fbdb1c970db37cb77e760eff95a92",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "cd91a52f162b8d0faaa84f14a049f1927566f49516cfaaaafb3f8753b7e56b11",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "32b52a40ebae16e3cc2b34e087ba108122e6b60dda4e132bb92542bd0370b063",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "44e7f5e746233b27f594775c1b9cc7d9c3322bedbb833e90d02960c2ea89a61c",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "b1aaf3cceab018d7f8207678cb4b63af33559c59868c11938f3a02f76afca1c3",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "87c46b77a4d8ce8c": {
+      "typesafe_computer_use/__init__.py": "f8ec4e395ea17ef1f731798e51c1e8ef63202ff5cde867fdd078c35d85aa61d2",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "60709773bd919e069174393759ded20a1c8fbdb1c970db37cb77e760eff95a92",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "cd91a52f162b8d0faaa84f14a049f1927566f49516cfaaaafb3f8753b7e56b11",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "105b7397c8731423f01fd45a473684f49de6be8990b6850996b747df2cc0260a",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "44e7f5e746233b27f594775c1b9cc7d9c3322bedbb833e90d02960c2ea89a61c",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "b1aaf3cceab018d7f8207678cb4b63af33559c59868c11938f3a02f76afca1c3",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "d49304f191bf2cda": {
+      "typesafe_computer_use/__init__.py": "f8ec4e395ea17ef1f731798e51c1e8ef63202ff5cde867fdd078c35d85aa61d2",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "b1d57ccf7dd862cf935b7086837f273fc32678f0f8073ad943f6074ae7222ad7",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "d6ccc18bacc4daf450a956a47b421310093e1a444170be2d336183685e806f27",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "7a3aa2f2d5add2a626c97df4f1723c1c5da99308a1df72873bad144b0e0d9709",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "8403c3a1df96b7ede54dd9f162f627cf9b5254908e132888d403ce1e0a13c64b",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "da99b130cb3c356474f2e7a31b3c8d2c6f45273e3096b5ea2c013369ab24a0e0",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "48ed354979b1baef": {
+      "typesafe_computer_use/__init__.py": "f8ec4e395ea17ef1f731798e51c1e8ef63202ff5cde867fdd078c35d85aa61d2",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "b1d57ccf7dd862cf935b7086837f273fc32678f0f8073ad943f6074ae7222ad7",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "d6ccc18bacc4daf450a956a47b421310093e1a444170be2d336183685e806f27",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "5de012c57cfcada3ad584b86760499ba64df50a41bdd611f2d667088c7b34f4d",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "8403c3a1df96b7ede54dd9f162f627cf9b5254908e132888d403ce1e0a13c64b",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "52630822cfbfa2b7762ef74f467eb8ea58f0ce1b3423fdc3fb4bf7291a0ee547",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "8144b51ae83a808e": {
+      "typesafe_computer_use/__init__.py": "d0f9a07a70d554d31c545f8127c585b16d295924fd17f4ecef276be1affd38c9",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "b1d57ccf7dd862cf935b7086837f273fc32678f0f8073ad943f6074ae7222ad7",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "d6ccc18bacc4daf450a956a47b421310093e1a444170be2d336183685e806f27",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "5de012c57cfcada3ad584b86760499ba64df50a41bdd611f2d667088c7b34f4d",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "8403c3a1df96b7ede54dd9f162f627cf9b5254908e132888d403ce1e0a13c64b",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "52630822cfbfa2b7762ef74f467eb8ea58f0ce1b3423fdc3fb4bf7291a0ee547",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "f628154e85e8d7a6": {
+      "typesafe_computer_use/__init__.py": "d0f9a07a70d554d31c545f8127c585b16d295924fd17f4ecef276be1affd38c9",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "b1d57ccf7dd862cf935b7086837f273fc32678f0f8073ad943f6074ae7222ad7",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "d6ccc18bacc4daf450a956a47b421310093e1a444170be2d336183685e806f27",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "75191b820c1dde2e46be4e2e1a81e3187f3a9c6e459bb51b58e648284d69e544",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "8403c3a1df96b7ede54dd9f162f627cf9b5254908e132888d403ce1e0a13c64b",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "b97a7e9555bb941b6f7b96ee3c7f89956e9abfa28cd90d64730361ef9b50c130",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "8463ae12a12f2f04": {
+      "typesafe_computer_use/__init__.py": "d0f9a07a70d554d31c545f8127c585b16d295924fd17f4ecef276be1affd38c9",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "aca9a8b1ab9c9d528ec91a1dba14f59916116674da80c65caea40d38eee5cbdd",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "f0c576438bce87223df9818af4ff9bac79742c4b1db9e8d27485ff5fafc85b9f",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "30c0b540e9731a6325e4bf6e50630d8ae29557be629710e157e3752df2ae4f64",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "8403c3a1df96b7ede54dd9f162f627cf9b5254908e132888d403ce1e0a13c64b",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "6952dac48fda804f7c7af955566d83b51a3720ede7d7e774bec84d7bf8aad060",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    },
+    "70abe41a732934f8": {
+      "typesafe_computer_use/__init__.py": "d0f9a07a70d554d31c545f8127c585b16d295924fd17f4ecef276be1affd38c9",
+      "typesafe_computer_use/__main__.py": "45a9485d6e2968c34fe1a91619513065dc58c3cd5e2b556c46142049d0550230",
+      "typesafe_computer_use/_vendor/__init__.py": "d7ed72b37068c3ba70827882934b98d00cade6e0357bbf03750ead8ef48f7889",
+      "typesafe_computer_use/_vendor/jev_ultrafast/__init__.py": "6d16c284f61b4b73798568d04907fb5d4ba219d8d5a9195abe752716c35c5109",
+      "typesafe_computer_use/_vendor/jev_ultrafast/agent.py": "aca9a8b1ab9c9d528ec91a1dba14f59916116674da80c65caea40d38eee5cbdd",
+      "typesafe_computer_use/_vendor/jev_ultrafast/browser.py": "f0c576438bce87223df9818af4ff9bac79742c4b1db9e8d27485ff5fafc85b9f",
+      "typesafe_computer_use/_vendor/jev_ultrafast/model.py": "ca14628bb747c8c4cc6f53a413cf6596abb320979181baaf465c7f1ff2c8f58c",
+      "typesafe_computer_use/_vendor/jev_ultrafast/questions.py": "8403c3a1df96b7ede54dd9f162f627cf9b5254908e132888d403ce1e0a13c64b",
+      "typesafe_computer_use/_vendor/jev_ultrafast/snapshot.js": "6952dac48fda804f7c7af955566d83b51a3720ede7d7e774bec84d7bf8aad060",
+      "typesafe_computer_use/actions.py": "6a7407314df6a2d0d41380721744f80fff7a332eec66b8e2ac9c287d10b4acca",
+      "typesafe_computer_use/ax_walk.py": "5cb38ad29b411a4f2a8d2493af90fdd141b4c9c5b79083447c35a0623613bdb1",
+      "typesafe_computer_use/browser/__init__.py": "facd9b9c56cc6d93b599a7b24b2d97ea714dca171ebadc45c5d2e58fc009f169",
+      "typesafe_computer_use/browser/act.py": "44d38a73df9e376620c8ee38765c2657d1f7d46f825da3bd12b3fdaa76901977",
+      "typesafe_computer_use/browser/bench.py": "d51959ead63102f6448fe25fee46d405d23bd1f0ae41bcac6d29f71010defc6a",
+      "typesafe_computer_use/browser/cdp.py": "f9778d682547c31d07ad7a906d38ff5f754fcb1946672fc00081c0d3fab57ef7",
+      "typesafe_computer_use/browser/decide.py": "31a6de419a58f8e3888b9ccf997128bfbbf93a38eb4629cf25f8f8b931444f5b",
+      "typesafe_computer_use/browser/orchestrator.py": "9289739bd661383f9c00b5986684b7abb8f0daac350975690e5d728a80b8fb32",
+      "typesafe_computer_use/browser/perceive.py": "af88e8c9b4f8dca96d9e2982ca5380026f2692cf714838159bac79595e1be807",
+      "typesafe_computer_use/browser/report.py": "67bb92b575aa32d86d4b3ad04be6ad14b1ff4964cf1d31079fa73a42d944a444",
+      "typesafe_computer_use/browser/runner.py": "68f2ec201867e758ccb0a42844040fb0010c59d62ca7a5575e5c32f7d60b1655",
+      "typesafe_computer_use/browser/ultrafast.py": "1680318a3a43e041b7a8e4f554a9d39b489793759fe79d52a5631adf9eb6fb44",
+      "typesafe_computer_use/calls.py": "0c9abe9b98d0e1493c621bd18f1b88b7a4bc962c16bf173e45fc87e50d7dc1f8",
+      "typesafe_computer_use/cli.py": "2959160908f97faa4d19803c8d99e7065c0627a98ccbd3acb38dc4aae3cf9251",
+      "typesafe_computer_use/computer.py": "aad4366b0f818c2e9fb5e8a3f3f5f441b84c1b1770afee5ea89116e3407b92a5",
+      "typesafe_computer_use/config.py": "27bfdb33af65a40692bdb1fe9398d39a9c5d41f290c191d2f96e06d05f7b6c43",
+      "typesafe_computer_use/dates.py": "a2a97bf2b42b9b1722a684c94c4edf970567fc69c7d775e138d47d441eef5d01",
+      "typesafe_computer_use/decide.py": "58058cc968f83c3029d2de02e6299559f7f9169cf9fe6dbec1a3945f5ede3a4f",
+      "typesafe_computer_use/macos.py": "324e49178ede99ddce89a502864d0db22af37bae88f874606b093ecd0122e78c",
+      "typesafe_computer_use/models.py": "8050fbf2b4d412b489513d93e142be41fafe8cf7c4b59be7a9eb2d3ad1c10211",
+      "typesafe_computer_use/ocr_rapid.py": "4557483acfca0ee63f9c0067ffdba59a8e1d7b7d988c06d1f1fecdd71c92bb4f",
+      "typesafe_computer_use/openai_writer.py": "5717007d7c659e669630c5efdfcec9e652981c92ae7a42b77dce75a44dc734ee",
+      "typesafe_computer_use/osworld/__init__.py": "035298e4d7c19583088b32dbeb7f0c02f5d5c1cf3f6df11efde2655d8fa75fd9",
+      "typesafe_computer_use/osworld/a11y.py": "822e7f65190dc25da0ef2fb531f8c1a3b10289b171f5e4d2dff7ae5184779537",
+      "typesafe_computer_use/osworld/agent.py": "9b0d1eb4ad8dba208cc27b51305699974debe6afad0995b9fa80a968bfc3dcbd",
+      "typesafe_computer_use/osworld/desktop.py": "2fa5983bf86eca45dd6abc973d9b2a88b97468569477a5304eb4438c66472d0a",
+      "typesafe_computer_use/osworld/light_walk.py": "298e572da5a3f98a3ebc33021c847a10aea69ceb2c1cdcb75ec27ce8a42d2e33",
+      "typesafe_computer_use/osworld/ocr.py": "0cffec7e2013652b6173f49822ab611ae507031cffe183e2516dded7d7b3aafc",
+      "typesafe_computer_use/osworld/record.py": "b4cad4ae09d9cfed80fe9bb95d4da2955a6e29714816a4656e487639cba3697e",
+      "typesafe_computer_use/osworld/results.py": "bd163afa1a4230286ebf3cccae0b5a3711a77292f50436696ac24939e6285a2d",
+      "typesafe_computer_use/osworld/tree.py": "c7cb4259ce33097bcd28abc87d4531913b1710424936295eb9dd370b49460dde",
+      "typesafe_computer_use/osworld/usage.py": "c823d8d840de1898bc84e78947fb9af59fcfc79f28b88936f411320937cf6a63",
+      "typesafe_computer_use/perception.py": "3f37da1cb8f9b27811d7a75e42477be20a43ee67f254bbb0591744fc57821a26",
+      "typesafe_computer_use/platform_adapter.py": "1f163493ef4afae957f165f9d6b0e46e5a1d649f2e4b68728c6789de5cf5eb14",
+      "typesafe_computer_use/report.py": "ba0b4f38ad767f69d58294ef7a30b5e92e7360d239858e2e218f8c4b649ea770",
+      "typesafe_computer_use/runner.py": "19d674f840e2bc83f4327188a5fad67fc2d98a8a805df5d6cbc36a6495244057",
+      "typesafe_computer_use/timing.py": "02c7c22bac67ef58b5cc71144aa6d3b325ed6fe53f2003ee7733f84572ddb95b",
+      "typesafe_computer_use/windows.py": "fb42602bdffc053494a4b52168edf38a029931b47a8b6be1a331afcf5b11902c",
+      "typesafe_computer_use/writer.py": "081e1ddc4402968d97b95c11b6725f02ddf21388794aa2bbae3aca68facbcdef",
+      "typesafe_computer_use/writer_fallback.py": "2135652b2a68df3d74afa04817278c69ef38a3b15c3f70eff3c184be956c54b0"
+    }
+  },
+  "final_runs": [
+    "20261001-171848-ultrafast-fast_comparison",
+    "20261001-171922-ultrafast-fast_reliability",
+    "20261001-172025-ultrafast-fast_transfer",
+    "20261001-172135-ultrafast-fast_prospective",
+    "20261001-172208-ultrafast-fast_holdout"
+  ],
+  "total_evaluated_cases": 429,
+  "final_cases": 80,
+  "final_passed": 77,
+  "reported_text_cost_usd": 0.09171661000000002,
+  "cost_scope": "Provider-reported text/recovery costs only. Excludes Jev, unreported failed calls, flight checks and Codex work."
+}

@@ -21,7 +21,7 @@ def command(arguments: list[str]) -> list[str]:
         return [executable, *arguments]
     raise SystemExit(
         "Engine missing. Install the Python CLI and rerun: uv tool install "
-        "git+https://github.com/DunnyBunny1/typesafe-computer-use.git@v0.2.0.post2"
+        "git+https://github.com/DunnyBunny1/typesafe-computer-use.git@v0.2.0.post3"
     )
 
 

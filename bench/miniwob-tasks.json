@@ -565,5 +565,109 @@
       "read-table",
       "click-link"
     ]
+  },
+  "fast_reliability": {
+    "seeds": [
+      88009,
+      88010
+    ],
+    "tasks": [
+      "click-button",
+      "click-checkboxes",
+      "enter-text",
+      "choose-list",
+      "search-engine",
+      "use-autocomplete-nodelay",
+      "choose-date-easy",
+      "form-sequence-2",
+      "scroll-text",
+      "click-dialog",
+      "read-table",
+      "click-link"
+    ]
+  },
+  "fast_transfer": {
+    "seeds": [
+      88011
+    ],
+    "tasks": [
+      "click-checkboxes-large",
+      "enter-text-2",
+      "click-tab-2-easy",
+      "click-collapsible",
+      "read-table-2",
+      "find-word",
+      "navigate-tree",
+      "number-checkboxes",
+      "click-option",
+      "enter-text-dynamic",
+      "click-button-sequence",
+      "click-dialog-2",
+      "focus-text",
+      "click-collapsible-2",
+      "form-sequence",
+      "form-sequence-3",
+      "multi-layouts",
+      "multi-orderings",
+      "choose-date-medium",
+      "use-spinner"
+    ]
+  },
+  "fast_final_unseen": {
+    "seeds": [
+      88012
+    ],
+    "tasks": [
+      "click-button",
+      "click-checkboxes",
+      "enter-text",
+      "choose-list",
+      "search-engine",
+      "use-autocomplete-nodelay",
+      "choose-date-easy",
+      "form-sequence-2",
+      "scroll-text",
+      "click-dialog",
+      "read-table",
+      "click-link"
+    ]
+  },
+  "fast_prospective": {
+    "seeds": [
+      88013
+    ],
+    "tasks": [
+      "click-button",
+      "click-checkboxes",
+      "enter-text",
+      "choose-list",
+      "search-engine",
+      "use-autocomplete-nodelay",
+      "choose-date-easy",
+      "form-sequence-2",
+      "scroll-text",
+      "click-dialog",
+      "read-table",
+      "click-link"
+    ]
+  },
+  "fast_holdout": {
+    "seeds": [
+      88014
+    ],
+    "tasks": [
+      "click-button",
+      "click-checkboxes",
+      "enter-text",
+      "choose-list",
+      "search-engine",
+      "use-autocomplete-nodelay",
+      "choose-date-easy",
+      "form-sequence-2",
+      "scroll-text",
+      "click-dialog",
+      "read-table",
+      "click-link"
+    ]
   }
 }

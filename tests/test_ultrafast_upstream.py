@@ -1,5 +1,6 @@
 """Offline contracts for a dynamic operation/target policy. No paid APIs."""
 
+import asyncio
 import json
 import time
 from copy import deepcopy
@@ -303,3 +304,139 @@ def test_navigation_during_prediction_reobserves_without_action(runner):
     assert runner.state["status"] == "ready"
     assert runner.state["decision"] is None
     runner.state["browser"].act.assert_not_called()
+
+
+def test_text_writer_receives_other_observed_field_values():
+    p = page()
+    p["actions"].append(
+        {"id": "source", "node": 30, "kind": "fill", "role": "textbox", "label": "Source", "value": "amber cedar"}
+    )
+    context = model.field_context("Copy the final word into Search", p["actions"][0], p, [])
+    assert any(f["value"] == "amber cedar" for f in context["fields"])
+
+
+def test_done_claim_is_audited_before_it_can_stop_the_agent(runner, monkeypatch):
+    runner.state["status"] = "ready"
+    monkeypatch.setattr(loop, "choose", Mock(return_value=decision("DONE")))
+    audit = Mock(return_value=decision("e3"))
+    monkeypatch.setattr(loop, "review_completion", audit)
+    runner.command("tick")
+    audit.assert_called_once()
+    assert runner.state["history"][-1]["action"] == "Go"
+    assert runner.state["status"] == "ready"
+    assert len(runner.state["decisions"]) == 2
+
+
+def test_completion_review_cannot_invent_an_action(monkeypatch):
+    monkeypatch.setenv("TYPESAFE_API_KEY", "test")
+    monkeypatch.setattr(model, "post_json", Mock(return_value={"answers": {"remaining_action": choice(["fake"], "fake")}}))
+    with pytest.raises(ValueError, match="Invalid TypeSafe"):
+        model.review_completion(page(), "Fill the form", [])
+
+
+def test_network_deadline_cancels_a_provider_that_keeps_streaming(monkeypatch):
+    cancelled = []
+
+    async def streaming(*args, **kwargs):
+        try:
+            while True:
+                await asyncio.sleep(0.001)
+        finally:
+            cancelled.append(True)
+
+    monkeypatch.setattr(model.CLIENT, "post", streaming)
+    monkeypatch.setattr(model, "REQUEST_SECONDS", 0.02)
+    started = time.perf_counter()
+    with pytest.raises(RuntimeError, match="Model connection failed"):
+        model.post_json("https://example.test", "unused", {})
+    assert cancelled == [True]
+    assert time.perf_counter() - started < 1
+
+
+def test_failed_text_provider_falls_back_before_any_input_and_keeps_keys_bound(monkeypatch):
+    monkeypatch.setattr(
+        model.os,
+        "environ",
+        {
+            "TEXT_MODEL_API_KEY": "router-key",
+            "TEXT_MODEL_BASE_URL": "https://openrouter.ai/api/v1",
+            "TEXT_MODEL": "inception/mercury-2.5",
+            "OPENAI_API_KEY": "openai-key",
+            "TEXT_MODEL_FALLBACKS": "openai",
+        },
+    )
+    calls = []
+
+    def post(url, key, body):
+        calls.append((url, key, body["model"]))
+        if len(calls) == 1:
+            raise RuntimeError("Model connection failed")
+        return {"choices": [{"message": {"content": '{"text":"cedar"}'}}]}
+
+    monkeypatch.setattr(model, "post_json", post)
+    value, helper = model.field_text({"goal": "Enter cedar"})
+    assert value == "cedar"
+    assert calls == [
+        ("https://openrouter.ai/api/v1/chat/completions", "router-key", "inception/mercury-2.5"),
+        ("https://api.openai.com/v1/chat/completions", "openai-key", "gpt-4.1-nano"),
+    ]
+    assert helper["model"] == "gpt-4.1-nano" and len(helper["prior_failures"]) == 1
+
+
+def test_observed_ordinal_constraint_overrides_incorrect_recovery_hint():
+    p = page()
+    p["actions"] = [
+        {"id": "wrong", "pagination": {"ordinal_from_observed_pages": 4}},
+        {"id": "right", "pagination": {"ordinal_from_observed_pages": 8}},
+        {"id": "uncertain", "pagination": {"ordinal_if_uniform_pages": 4}},
+        {"id": "next"},
+    ]
+    allowed = model.eligible_actions(p, "Open the 8th search result.\nNext-step guidance: Click wrong.")
+    assert [a["id"] for a in allowed] == ["right", "uncertain", "next"]
+    # Multiple requested ordinals and an inferred uniform page size cannot justify pruning.
+    assert model.eligible_actions(p, "Compare the 4th result and 8th result") == p["actions"]
+
+
+def test_completion_review_preserves_checked_and_selected_state(monkeypatch):
+    p = page()
+    p["actions"][2].update(role="checkbox", checked="true", selected="false", expanded="true", current_value="yes")
+
+    def post(_url, _key, body):
+        criteria = body["questions"]["remaining_action"]["criteria"]
+        for key in ("role", "checked", "selected", "expanded", "current_value"):
+            assert criteria["e3"][key] == p["actions"][2][key]
+        return {"model": "test", "answers": {"remaining_action": choice(criteria, "DONE")}}
+
+    monkeypatch.setenv("TYPESAFE_API_KEY", "test")
+    monkeypatch.setattr(model, "post_json", post)
+    assert model.review_completion(p, "Keep the option checked", [])["choice"] == "DONE"
+
+
+@pytest.mark.parametrize("terminal", ["DONE", "BLOCKED"])
+def test_terminal_choice_does_not_require_optional_recovery(runner, monkeypatch, terminal):
+    runner.state["history"] = [{"action": "Go", "page_changed": False}] * 4
+    monkeypatch.setattr(loop, "choose", Mock(return_value=decision(terminal)))
+    monkeypatch.setattr(loop, "review_completion", Mock(return_value=decision(terminal)))
+    recovery = Mock(side_effect=AssertionError("No recovery for terminal choices"))
+    monkeypatch.setattr(loop, "recovery_focus", recovery)
+    runner.command("predict")
+    assert runner.state["decision"]["choice"] == terminal
+    recovery.assert_not_called()
+
+
+@pytest.mark.parametrize("error", [ValueError("missing key"), RuntimeError("providers unavailable"), None])
+def test_optional_recovery_unavailable_preserves_jev_choice(runner, monkeypatch, error):
+    runner.state["history"] = [{"action": "Go", "page_changed": False}] * 4
+    monkeypatch.setattr(loop, "choose", Mock(return_value=decision("e3")))
+    monkeypatch.setattr(loop, "recovery_focus", Mock(side_effect=error, return_value=(None, {"model": "test"})))
+    runner.command("predict")
+    assert runner.state["decision"]["choice"] == "e3"
+    assert len(runner.state["recovery_calls"]) == 1
+
+
+def test_recovery_accepts_null_without_fallback(monkeypatch):
+    monkeypatch.setenv("TEXT_MODEL_API_KEY", "test")
+    post = Mock(return_value={"choices": [{"message": {"content": '{"text":null}'}}]})
+    monkeypatch.setattr(model, "post_json", post)
+    assert model.recovery_focus(page(), "Nothing more to do", [])[0] is None
+    assert post.call_count == 1

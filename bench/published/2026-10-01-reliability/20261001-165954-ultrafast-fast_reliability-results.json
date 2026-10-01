@@ -1,0 +1,26 @@
+[
+  {
+    "task": "search-engine",
+    "seed": 88009,
+    "pass": true,
+    "goal": "Use the textbox to enter \"Ignacio\" and press \"Search\", then find and click the 2nd search result.",
+    "outcome": "environment_terminated",
+    "steps": 3,
+    "done": true,
+    "raw_reward": 1,
+    "reward": 0.9837583333333333,
+    "total_ms": 2636.0
+  },
+  {
+    "task": "search-engine",
+    "seed": 88010,
+    "pass": true,
+    "goal": "Use the textbox to enter \"Teodoro\" and press \"Search\", then find and click the 9th search result.",
+    "outcome": "environment_terminated",
+    "steps": 5,
+    "done": true,
+    "raw_reward": 1,
+    "reward": 0.967175,
+    "total_ms": 4646.7
+  }
+]

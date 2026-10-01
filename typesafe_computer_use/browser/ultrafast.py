@@ -79,7 +79,7 @@ def run_ultrafast(session, goal: str, *, output: Path, max_steps=60, max_seconds
             "steps": len(state["history"]),
             "decisions": len(state["decisions"]),
             "text_calls": len(state["text_calls"]),
-            "planner_calls": 0,
+            "planner_calls": len(state.get("recovery_calls", [])),
             "wall_ms": round((time.perf_counter() - started) * 1000, 1),
             "decision_loop_ms": state["elapsed_ms"],
             "url_after": state["page"]["url"],

@@ -1,6 +1,6 @@
 [project]
 name = "typesafe-computer-use"
-version = "0.2.0.post2"
+version = "0.2.0.post3"
 description = "Fast Jev browser control, verified results and an installable Codex skill."
 readme = "README.md"
 license = "MIT"

@@ -1,0 +1,14 @@
+[
+  {
+    "task": "search-engine",
+    "seed": 88008,
+    "pass": true,
+    "goal": "Use the textbox to enter \"Tora\" and press \"Search\", then find and click the 6th search result.",
+    "outcome": "environment_terminated",
+    "steps": 4,
+    "done": true,
+    "raw_reward": 1,
+    "reward": 0.9757416666666666,
+    "total_ms": 3732.6
+  }
+]

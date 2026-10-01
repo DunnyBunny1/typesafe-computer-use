@@ -14,3 +14,12 @@ Copied agent.py, browser.py, model.py, questions.py and snapshot.js. Local chang
 - Formatting follows this repository. No per-click planner was added.
 
 Upstream's flight demo is author-measured, not a general-purpose SOTA benchmark.
+
+Further local reliability changes in v0.2.0.post3:
+- Jev completion audit and at most three LLM recovery hints for uncertain/cycling decisions; Jev remains the action selector.
+- Cross-field text context, paragraph word positions, current page/list positions, autocomplete metadata, nested scrolling, and hit-tested controls inside panels.
+- Field-specific freshness guards preserve source-field changes without treating unrelated clocks as changes to the target.
+- Async HTTP requests have a total cancellation deadline; text providers can fail over using only their own configured credentials.
+- See docs/reliability.md for measured tradeoffs and retained failures.
+
+Review fixes preserve full control state in completion audits, revalidate observed text sources before filling, interpret inactive ARIA current markers correctly, and make recovery hints optional on failure.

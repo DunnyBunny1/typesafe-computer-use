@@ -40,7 +40,7 @@ class Browser:
                     "Runtime.evaluate",
                     expression="""(action => new Promise(resolve => {
                       const field=window.__jevFast?.nodes.get(action.node);
-                      const autocomplete=action.kind==='fill' && field?.getAttribute('role')==='combobox';
+                      const autocomplete=action.kind==='fill' && (field?.getAttribute('role')==='combobox' || action.autocomplete==='list');
                       let frames=0, stopped=false;
                       const finish=()=>{stopped=true;resolve()};
                       setTimeout(finish,autocomplete ? 200 : 50);
@@ -74,14 +74,25 @@ class Browser:
         raise StalePage("Page did not settle")
 
     def fresh(self, page, action=None):
-        if action is not None and action["kind"] in {"click", "select"}:
+        if action is not None and action["kind"] in {"click", "select", "fill", "scroll"} and "node" in action:
             node = action["node"]
             if type(node) is not int:
                 return False
             current = self.evaluate(
                 f"(() => {{ const c=window.__jevFast; return c ? [c.pageKey(),c.guard(c.nodes.get({node}))] : null; }})()"
             )
-            return current == [page["page_key"], page["guards"].get(str(node))]
+            if current != [page["page_key"], page["guards"].get(str(node))]:
+                return False
+            if action["kind"] == "fill":
+                # Validate every observed source supplied to the writer, not just the target form.
+                from .model import field_context
+
+                observed = self.evaluate(READ_STATE)
+                if observed is None:
+                    return False
+                target = next((a for a in observed["actions"] if a.get("node") == node and a["kind"] == "fill"), None)
+                return target is not None and field_context("", action, page, []) == field_context("", target, observed, [])
+            return True
         return self.evaluate(MARKER) == page["marker"]
 
     def act(self, action, page, text=None):
@@ -122,7 +133,25 @@ def browser_operation(request):
         action = request["action"]
         kind = action["kind"]
         if kind == "scroll":
-            call("Input.dispatchMouseEvent", type="mouseWheel", x=550, y=650, deltaX=0, deltaY=action["delta"])
+            if "node" in action:
+                target = evaluate(
+                    """(node => {
+                      const e=window.__jevFast?.nodes.get(node);
+                      if (!e?.isConnected) return null;
+                      const r=e.getBoundingClientRect();
+                      const x=Math.max(0,Math.min(innerWidth,r.right)+Math.max(0,r.left))/2;
+                      const y=Math.max(0,Math.min(innerHeight,r.bottom)+Math.max(0,r.top))/2;
+                      if (!e.contains(document.elementFromPoint(x,y))) return null;
+                      return {x,y};
+                    })("""
+                    + str(action["node"])
+                    + ")"
+                )
+                if target is None:
+                    raise StalePage("Scroll region changed or is covered")
+            else:
+                target = evaluate("({x:innerWidth/2,y:innerHeight/2})")
+            call("Input.dispatchMouseEvent", type="mouseWheel", **target, deltaX=0, deltaY=action["delta"])
         elif kind != "wait":
             if type(action["node"]) is not int:
                 raise ValueError("Invalid observed node")

@@ -50,6 +50,11 @@ def main():
             "completion_validation",
             "stability_repeat",
             "fast_comparison",
+            "fast_reliability",
+            "fast_transfer",
+            "fast_final_unseen",
+            "fast_prospective",
+            "fast_holdout",
         ],
         default="development",
     )

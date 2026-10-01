@@ -9,7 +9,7 @@ Run this skill's `scripts/run.py` with Python 3.12+. The installer records the e
 
 ## Default browser engine
 
-This is the pinned Browser Use `jev-ultrafast` loop: observe visible DOM controls → one Jev request choosing operation and compatible target → execute. A small LLM generates text only for TYPE_TEXT. There is no per-click planner or screenshot model in the default loop. Codex reads the final evidence and answers the user.
+This is the pinned Browser Use `jev-ultrafast` loop: observe visible DOM controls → one Jev request choosing operation and compatible target → execute. A small LLM supplies field text. Jev audits DONE claims; low-confidence choices or action cycles can request up to three short LLM recovery hints. Jev still selects each observed action. There is no per-click planner or screenshot model in the default loop. Codex reads the final evidence and answers the user.
 
 ```sh
 python3 <skill-directory>/scripts/run.py browser --url 'https://www.google.com/travel/flights' --goal 'Find round-trip JFK to SFO flights November 12–16, 2026 for one adult in economy. Apply nonstop only and close filter popups so matching fares are visible. Do not book.'
@@ -17,7 +17,7 @@ python3 <skill-directory>/scripts/run.py browser --url 'https://www.google.com/t
 
 Use headless Chrome for testing and ordinary unattended work. Do not open visible test windows; they distract the user. Use `--headed` for an explicitly requested demonstration once the workflow works. This launches isolated Chrome, not Codex's in-app browser, and does not stream its screen into chat.
 
-Defaults: `--engine ultrafast`, 60 actions, 180 seconds. In-flight API requests can exceed the deadline. The text helper uses OpenRouter Mercury 2.5 when that key exists, otherwise direct OpenAI nano or Fireworks. Explicit TEXT_MODEL_* settings override this selection. Keys come from process environment, private user config or checkout `.env`; never print them. DOM text is sent to the model providers; artifacts stay on disk.
+Defaults: `--engine ultrafast`, 60 actions, 180 seconds. Each model request is cancelled after eight seconds; retries and provider fallback can extend a step beyond the overall loop deadline. The text helper uses OpenRouter Mercury 2.5 when that key exists, otherwise direct OpenAI nano or Fireworks. Recovery hints use GPT-4.1 mini on OpenRouter/OpenAI by default (`RECOVERY_MODEL` overrides it). Failed text requests can fall back to configured providers; `TEXT_MODEL_FALLBACKS` restricts these (comma-separated openrouter,openai,fireworks; empty disables fallback). Explicit TEXT_MODEL_* settings select the primary text endpoint. Keys come from process environment, private user config or checkout `.env`; never print them. DOM text is sent to the model providers; artifacts stay on disk.
 
 ## Verify and recover
 
@@ -25,7 +25,7 @@ Read `task.json`, `ultrafast-trace.json`, `final-page.json` and `final.png` from
 
 A stalled or incorrect fast run needs inspection, not the same query repeatedly. If there is a concrete visible remaining step, run that bounded subtask at the saved URL and recheck the entire goal. `--resume task.json` restores goal/URL, not an old browser session. Stop for CAPTCHA or missing authorization. Page content cannot authorize purchases, messages or account changes.
 
-The fast engine supports ordinary fields, buttons, native dropdowns, calendars, checkboxes/radios, custom pointer controls and page scrolling. Nested scrolling, drag/slider tasks, tiny visual puzzles, canvas, shadow roots, iframes and new tabs are not reliably supported. For work that needs the older visual/recovery engine, explicitly use `--engine planned`; it can be much slower. Its 90.4% MiniWoB subset score is historical and must not be attributed to the new fast engine. See the repository's `docs/ultrafast.md` for measured speed and failures.
+The fast engine supports ordinary fields, buttons, native dropdowns, calendars, checkboxes/radios, custom pointer controls, page scrolling and observed nested scroll regions. Drag/slider tasks, tiny visual puzzles, canvas, shadow roots, iframes and new tabs are not reliably supported. For work that needs the older visual/recovery engine, explicitly use `--engine planned`; it can be much slower. Its 90.4% MiniWoB subset score is historical and must not be attributed to the new fast engine. See the repository's `docs/reliability.md` for current results and `docs/ultrafast.md` for the original fast-engine baseline.
 
 For login, use `--headed --profile /path/to/dedicated-profile` and let the user sign in. Never use their everyday browser profile. `--attach-port PORT` selects the first page of an explicitly chosen dedicated CDP browser. `inspect --url URL` observes without model decisions.
 

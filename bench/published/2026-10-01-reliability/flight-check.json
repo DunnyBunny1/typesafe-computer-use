@@ -1,0 +1,35 @@
+{
+  "task": {
+    "engine": "browser-use/jev-ultrafast",
+    "upstream_commit": "1231850a0bf1a0c0341fe408ef1668dbbfdfac46",
+    "goal": "Find round-trip JFK to SFO flights November 12\u201316, 2026 for one adult in economy. Apply nonstop only and close filter popups so matching fares are visible. Do not book.",
+    "outcome": "done_unverified",
+    "error_type": null,
+    "error_message": null,
+    "answer": "Review final-page.json and final.png to verify and answer the task.",
+    "steps": 12,
+    "decisions": 24,
+    "text_calls": 2,
+    "planner_calls": 3,
+    "wall_ms": 15175.1,
+    "decision_loop_ms": 15152,
+    "url_after": "https://www.google.com/travel/flights/search?tfs=CBwQAhogEgoyMDI2LTExLTEyKABqBwgBEgNKRktyBwgBEgNTRk8aIBIKMjAyNi0xMS0xNigAagcIARIDU0ZPcgcIARIDSkZLQAFIAXABggELCP___________wGYAQE&tfu=EgYIABAAGAA"
+  },
+  "independent_grade": {
+    "passed": true,
+    "checks": {
+      "round_trip": true,
+      "airports": true,
+      "dates": true,
+      "one_adult": true,
+      "economy": true,
+      "nonstop_selected": true,
+      "popup_closed": true,
+      "fare_visible": true
+    },
+    "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhogEgoyMDI2LTExLTEyKABqBwgBEgNKRktyBwgBEgNTRk8aIBIKMjAyNi0xMS0xNigAagcIARIDU0ZPcgcIARIDSkZLQAFIAXABggELCP___________wGYAQE&tfu=EgYIABAAGAA"
+  },
+  "source_set": "70abe41a732934f8",
+  "screenshot_reviewed": true,
+  "timing_scope": "Task loop; excludes initial Chrome startup/navigation and host verification."
+}

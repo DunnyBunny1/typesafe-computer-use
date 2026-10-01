@@ -1,5 +1,7 @@
 # Jev Ultrafast: architecture and measurements
 
+This is the v0.2.0.post2 baseline. See [reliability improvements](reliability.md) for the current engine and new validation.
+
 Version 0.2.0.post2 changes the default to [Browser Use's Jev Ultrafast](https://github.com/browser-use/jev-ultrafast), copied under MIT at commit `1231850a0bf1a0c0341fe408ef1668dbbfdfac46`. The original attribution and license are preserved in [`_vendor/jev_ultrafast`](../typesafe_computer_use/_vendor/jev_ultrafast/UPSTREAM.md).
 
 The loop observes visible DOM controls, asks Jev for an operation and speculative operation-specific targets in one request, executes the matching operation, and repeats. A text model supplies text only when typing is needed. There is **no per-action LLM planner**. The host reviews the final screenshot and page evidence; the engine's `done_unverified` status is not a success grade.
