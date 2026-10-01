@@ -1,4 +1,4 @@
-"""General task entrypoint: planned browser work plus native desktop diagnostics."""
+"""General task entrypoint: fast Jev browser work and optional planning/native modes."""
 
 from __future__ import annotations
 
@@ -66,7 +66,7 @@ def doctor():
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="LLM planning, Jev decisions, browser execution and evidence")
+    ap = argparse.ArgumentParser(description="Fast Jev decisions, optional planning, browser execution and evidence")
     sub = ap.add_subparsers(dest="command", required=True)
     sub.add_parser("doctor", help="Read capabilities and credential presence, never secret values")
     native = sub.add_parser("desktop", help="Bounded native task in one explicitly selected foreground app")
@@ -84,6 +84,7 @@ def main(argv=None):
             "--profile", type=Path, help="Dedicated reusable automation profile; never use your normal browser profile"
         )
         p.add_argument("--headed", action="store_true")
+        p.add_argument("--engine", choices=["ultrafast", "planned"], default="ultrafast")
         p.add_argument("--out", type=Path, default=Path.home() / ".local/share/jev-computer-use/runs/tasks")
         p.add_argument("--goal", default="Inspect the current page")
         p.add_argument("--steps", type=int, default=60)
@@ -138,12 +139,21 @@ def main(argv=None):
         else:
             browser = stack.enter_context(Chrome(headed=args.headed, profile=str(args.profile) if args.profile else None))
         session = stack.enter_context(browser.attach())
+        if args.engine == "ultrafast":
+            session.call(
+                "Emulation.setDeviceMetricsOverride",
+                {"width": 1120, "height": 780, "deviceScaleFactor": 1, "mobile": False},
+            )
         if args.url:
             act.navigate(session, args.url)
             act.wait_for_load(session)
         if args.command == "inspect":
             result = base_state(args.goal, perceive(session), [], url_catalog=None)
             (folder.root / "observation.json").write_text(json.dumps(result, indent=2))
+        elif args.engine == "ultrafast" and not args.always_plan:
+            from .browser.ultrafast import run_ultrafast
+
+            result = run_ultrafast(session, args.goal, output=folder.root, max_steps=args.steps, max_seconds=args.seconds)
         else:
             client = stack.enter_context(TypeSafeClient())
             result = run_task(
@@ -172,7 +182,7 @@ def main(argv=None):
             indent=2,
         )
     )
-    return 0 if result.get("outcome", "complete") == "complete" else 2
+    return 0 if result.get("outcome", "complete") in {"complete", "done_unverified"} else 2
 
 
 if __name__ == "__main__":

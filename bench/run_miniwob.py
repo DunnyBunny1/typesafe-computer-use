@@ -22,6 +22,7 @@ from typesafe_computer_use.browser.cdp import Chrome
 from typesafe_computer_use.browser.orchestrator import run_task
 from typesafe_computer_use.browser.report import RunFolder
 from typesafe_computer_use.browser.runner import run_goal
+from typesafe_computer_use.browser.ultrafast import run_ultrafast
 from typesafe_computer_use.computer import credentials
 from typesafe_computer_use.writer import make_writer
 from typesafe_computer_use.writer_fallback import from_env
@@ -31,7 +32,7 @@ def main():
     ap = argparse.ArgumentParser(__doc__)
     ap.add_argument("--checkout", type=Path, required=True)
     ap.add_argument("--output", type=Path, required=True)
-    ap.add_argument("--mode", choices=["reflex", "planned", "adaptive"], required=True)
+    ap.add_argument("--mode", choices=["reflex", "planned", "adaptive", "ultrafast"], required=True)
     ap.add_argument(
         "--split",
         choices=[
@@ -48,6 +49,7 @@ def main():
             "stable_validation",
             "completion_validation",
             "stability_repeat",
+            "fast_comparison",
         ],
         default="development",
     )
@@ -70,7 +72,8 @@ def main():
     batch.mkdir(parents=True, exist_ok=False)
     source_hashes = {
         str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
-        for p in sorted((root / "typesafe_computer_use").rglob("*.py"))
+        for p in sorted((root / "typesafe_computer_use").rglob("*"))
+        if p.suffix in {".py", ".js"}
     }
     (batch / "manifest.json").write_text(
         json.dumps({**manifest, "mode": args.mode, "source_hashes": source_hashes, "max_planner_rounds": args.rounds}, indent=2)
@@ -103,7 +106,17 @@ def main():
                         def ended():
                             return session.evaluate("WOB_DONE_GLOBAL") is True
 
-                        if args.mode == "reflex":
+                        if args.mode == "ultrafast":
+                            result = run_ultrafast(
+                                session,
+                                goal,
+                                output=folder,
+                                max_steps=manifest["max_steps"],
+                                max_seconds=manifest["episode_timeout_seconds"],
+                                stop_when=ended,
+                            )
+                            row.update(outcome=result["outcome"], steps=result["steps"])
+                        elif args.mode == "reflex":
                             result = run_goal(
                                 session,
                                 client,

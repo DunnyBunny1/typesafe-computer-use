@@ -1,7 +1,7 @@
 [project]
 name = "typesafe-computer-use"
-version = "0.2.0.post1"
-description = "Jev computer use with LLM planning, browser verification, provider fallback and an installable Codex skill."
+version = "0.2.0.post2"
+description = "Fast Jev browser control, verified results and an installable Codex skill."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -21,6 +21,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries",
 ]
 dependencies = [
+    "httpx[http2]>=0.28,<1",
     "anthropic==1.6.0",
     "openai==2.54.0",
     "pillow>=11.0,<13",

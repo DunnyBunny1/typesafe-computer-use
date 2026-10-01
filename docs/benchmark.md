@@ -1,12 +1,14 @@
 # Evaluation: October 1, 2026
 
+This report measures the historical **planned engine**, available with `--engine planned`. The default changed in v0.2.0.post2; its separate results and limitations are in [Jev Ultrafast](ultrafast.md). The 90.4% below does not describe the new default.
+
 ## Result and scope
 
 The final v9 engine passed **94 of 104 cases (90.4%)**: 52 MiniWoB++ task families on each of two fresh random seeds. Each run passed 47/52. Median end-to-end case time was **5.721 seconds**, p95 **31.872 seconds**, and estimated recorded inference cost **$1.323867** for all 104 cases (about 1.3 cents/case).
 
 This is an **adapted subset of a vetted benchmark**, not a vetted result or an official leaderboard submission. These task families informed development; the final seeds were fresh, not the task families. No matched comparison against Codex's computer-use tool or another agent was run. No OSWorld score was measured. **This does not establish SOTA or a 90% success rate on arbitrary websites or desktop tasks.**
 
-The exact measured Python engine is commit [`5acd74f70418e050812bec68941b79f0a8336e4a`](https://github.com/DunnyBunny1/typesafe-computer-use/commit/5acd74f70418e050812bec68941b79f0a8336e4a). Every engine file's SHA-256 matches the saved run manifests. The tagged release adds portable configuration, installer, metadata and documentation; it does not change the action/planning algorithm. Packaging has separate offline and fresh-install validation, not a newly measured browser score.
+The exact measured Python engine is commit [`5acd74f70418e050812bec68941b79f0a8336e4a`](https://github.com/DunnyBunny1/typesafe-computer-use/commit/5acd74f70418e050812bec68941b79f0a8336e4a). Every engine file's SHA-256 matches the saved run manifests. The v0.2.0.post1 release adds portable configuration, installer, metadata and documentation; it does not change the action/planning algorithm. Packaging has separate offline and fresh-install validation, not a newly measured browser score.
 
 ## Protocol
 

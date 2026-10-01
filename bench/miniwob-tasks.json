@@ -546,5 +546,24 @@
       "choose-date-medium",
       "book-flight-nodelay"
     ]
+  },
+  "fast_comparison": {
+    "seeds": [
+      88008
+    ],
+    "tasks": [
+      "click-button",
+      "click-checkboxes",
+      "enter-text",
+      "choose-list",
+      "search-engine",
+      "use-autocomplete-nodelay",
+      "choose-date-easy",
+      "form-sequence-2",
+      "scroll-text",
+      "click-dialog",
+      "read-table",
+      "click-link"
+    ]
   }
 }

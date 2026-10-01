@@ -1,7 +1,7 @@
 {
   "name": "typesafe-computer-use",
-  "version": "0.2.1",
-  "description": "Jev computer use with LLM planning, browser verification and an installable skill.",
+  "version": "0.2.2",
+  "description": "Fast Jev browser control with an installable skill and inspectable evidence.",
   "author": {
     "name": "Donovan Murray",
     "url": "https://github.com/DunnyBunny1"
@@ -12,8 +12,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Jev Computer Use",
-    "shortDescription": "Browser workflows with Jev decisions and LLM planning",
-    "longDescription": "A browser-first computer-use skill with bounded planning, provider fallback and inspectable evidence. Native Mac support has limited smoke-test coverage.",
+    "shortDescription": "Fast browser workflows with Jev action selection",
+    "longDescription": "A browser-first computer-use skill based on Browser Use Jev Ultrafast, with LLM text writing and independent result verification. A separate planned engine and bounded native Mac backend remain available.",
     "developerName": "Donovan Murray",
     "category": "Productivity",
     "capabilities": [
