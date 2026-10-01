@@ -15,3 +15,6 @@ infra/gcp/.terraform/
 infra/gcp/terraform.tfvars
 infra/gcp/*.tfstate*
 results/
+
+# Local raw reliability measurements; keep only the prose summary in Git.
+bench/published/

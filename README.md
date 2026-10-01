@@ -4,7 +4,7 @@ A computer-use engine and installable Codex skill built around [Browser Use's Je
 
 This is Donovan Murray's fork of [Aaron Levin's TypeSafe Computer Use](https://github.com/awlevin/typesafe-computer-use), retaining its MIT license and history. It adds adaptive browser planning, provider fallback, control handling repairs, completion verification, and a portable `$computer-use` skill. It does not train a new model.
 
-**Current reliability work:** see [measurements, retained failures and scope](docs/reliability.md).
+**Current reliability work:** see [brief results and limitations](docs/reliability.md).
 
 **Historical planned-engine result:** 94/104 successes (90.4%) on an adapted MiniWoB++ subset, 5.7 seconds median, about $1.32 estimated inference for all 104 cases. This score belongs to `--engine planned`, not the new default fast engine. These are short browser tasks, not a general desktop success rate or a SOTA claim. See [fast-engine architecture and evaluation](docs/ultrafast.md) for current results. [Protocol, failures, costs and reproduction](docs/benchmark.md).
 
