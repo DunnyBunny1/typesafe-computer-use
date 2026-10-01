@@ -669,5 +669,100 @@
       "read-table",
       "click-link"
     ]
+  },
+  "browser_use_holdout": {
+    "tasks": [
+      "click-checkboxes-large",
+      "enter-text-2",
+      "click-tab-2-easy",
+      "click-collapsible",
+      "read-table-2",
+      "find-word",
+      "navigate-tree",
+      "number-checkboxes",
+      "click-option",
+      "enter-text-dynamic",
+      "click-button-sequence",
+      "click-dialog-2",
+      "focus-text",
+      "click-collapsible-2",
+      "form-sequence",
+      "form-sequence-3",
+      "multi-layouts",
+      "multi-orderings",
+      "choose-date-medium",
+      "use-spinner"
+    ],
+    "seeds": [
+      88101,
+      88102
+    ]
+  },
+  "browser_use_extra": {
+    "tasks": [
+      "drag-box",
+      "drag-items",
+      "drag-items-grid",
+      "drag-sort-numbers",
+      "use-slider",
+      "use-slider-2"
+    ],
+    "seeds": [
+      88103
+    ]
+  },
+  "browser_use_acceptance": {
+    "tasks": [
+      "click-checkboxes-large",
+      "enter-text-2",
+      "click-tab-2-easy",
+      "click-collapsible",
+      "read-table-2",
+      "find-word",
+      "navigate-tree",
+      "number-checkboxes",
+      "click-option",
+      "enter-text-dynamic",
+      "click-button-sequence",
+      "click-dialog-2",
+      "focus-text",
+      "click-collapsible-2",
+      "form-sequence",
+      "form-sequence-3",
+      "multi-layouts",
+      "multi-orderings",
+      "choose-date-medium",
+      "use-spinner"
+    ],
+    "seeds": [
+      88201
+    ]
+  },
+  "browser_use_fast_acceptance": {
+    "tasks": [
+      "click-checkboxes-large",
+      "enter-text-2",
+      "click-tab-2-easy",
+      "click-collapsible",
+      "read-table-2",
+      "find-word",
+      "navigate-tree",
+      "number-checkboxes",
+      "click-option",
+      "enter-text-dynamic",
+      "click-button-sequence",
+      "click-dialog-2",
+      "focus-text",
+      "click-collapsible-2",
+      "form-sequence",
+      "form-sequence-3",
+      "multi-layouts",
+      "multi-orderings",
+      "choose-date-medium",
+      "use-spinner"
+    ],
+    "seeds": [
+      88202
+    ]
   }
 }

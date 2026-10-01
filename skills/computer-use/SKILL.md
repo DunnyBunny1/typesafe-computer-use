@@ -1,34 +1,36 @@
 ---
 name: computer-use
-description: Operate websites with Browser Use's fast Jev loop, using observed controls and a small text model. Use for browser forms, filters, navigation and multi-step searches. Includes an optional planned engine and bounded native Mac control.
+description: Operate websites using Browser Use, fast Jev decisions and visual recovery. Use for browser searches, forms, filters and workflows across tabs, embedded frames and shadow DOM. Includes a separate bounded native Mac mode.
 ---
 
 # Computer use
 
-Run this skill's `scripts/run.py` with Python 3.12+. The installer records the engine runtime; plugin-only installs use `computer-use` on PATH. Run `python3 <skill-directory>/scripts/run.py doctor` to check setup. Use the actual directory containing this file and respect the host's shell wrapper.
+Run this skill's `scripts/run.py` with Python 3.12+. The installer records the engine runtime; plugin-only installs use `computer-use` on PATH. Substitute this skill's actual directory and respect the host's shell wrapper. `doctor` checks setup; `prepare` caches the locked Browser Use dependencies without opening a browser.
 
-## Default browser engine
-
-This is the pinned Browser Use `jev-ultrafast` loop: observe visible DOM controls → one Jev request choosing operation and compatible target → execute. A small LLM supplies field text. Jev audits DONE claims; low-confidence choices or action cycles can request up to three short LLM recovery hints. Jev still selects each observed action. There is no per-click planner or screenshot model in the default loop. Codex reads the final evidence and answers the user.
+## Browser workflow
 
 ```sh
-python3 <skill-directory>/scripts/run.py browser --url 'https://www.google.com/travel/flights' --goal 'Find round-trip JFK to SFO flights November 12–16, 2026 for one adult in economy. Apply nonstop only and close filter popups so matching fares are visible. Do not book.'
+python3 <skill-directory>/scripts/run.py browser --engine browser-use --url 'https://www.google.com/travel/flights' --goal 'Find round-trip JFK to SFO flights November 12–16, 2026 for one adult in economy. Apply nonstop only and close filter popups so matching fares are visible. Do not book.'
 ```
 
-Use headless Chrome for testing and ordinary unattended work. Do not open visible test windows; they distract the user. Use `--headed` for an explicitly requested demonstration once the workflow works. This launches isolated Chrome, not Codex's in-app browser, and does not stream its screen into chat.
+Use headless Chrome for unattended work and tests. Use `--headed` for an explicitly requested demonstration. This launches isolated Chrome, not Codex's in-app browser, and does not stream its screen into chat. Never use the user's everyday browser profile. For login, use a dedicated `--profile /path` and let the user sign in; password entry is not automated.
 
-Defaults: `--engine ultrafast`, 60 actions, 180 seconds. Each model request is cancelled after eight seconds; retries and provider fallback can extend a step beyond the overall loop deadline. The text helper uses OpenRouter Mercury 2.5 when that key exists, otherwise direct OpenAI nano or Fireworks. Recovery hints use GPT-4.1 mini on OpenRouter/OpenAI by default (`RECOVERY_MODEL` overrides it). Failed text requests can fall back to configured providers; `TEXT_MODEL_FALLBACKS` restricts these (comma-separated openrouter,openai,fireworks; empty disables fallback). Explicit TEXT_MODEL_* settings select the primary text endpoint. Keys come from process environment, private user config or checkout `.env`; never print them. DOM text is sent to the model providers; artifacts stay on disk.
+Full Browser Use owns observation, browser actions, screenshots, history, tab and frame handling. Jev chooses simple actions and targets in one request; a small model supplies field text. When Jev is uncertain or a step needs vision or a different tool, the full vision agent takes over the remainder of the task. It can magnify image regions, use keyboard controls and drag observed elements. There is no advance planning pass.
 
-## Verify and recover
+Configured providers are tried in order: Fireworks (Kimi K3 vision, DeepSeek V4.1 Flash text), OpenRouter, OpenAI (GPT-5.4 vision, GPT-4.1 mini text), then Anthropic (Sonnet 4.6, Haiku 4.5). Failover is limited to inference authentication/quota/billing errors and does not repeat browser actions. `BROWSER_USE_PROVIDER` pins one provider; `BROWSER_USE_MODEL` and `BROWSER_USE_TEXT_MODEL` then override its models. Automatic mode supports provider-specific overrides, e.g. `BROWSER_USE_FIREWORKS_MODEL`. Fireworks uses GLM-5.3 Flash for focused image transcription. `--always-plan` bypasses Jev for a full-agent comparison. `--engine ultrafast` retains the previous lighter DOM-only engine; `--engine planned` retains the original planner. Their historical scores do not apply to the Browser Use engine.
 
-Read `task.json`, `ultrafast-trace.json`, `final-page.json` and `final.png` from the printed run folder. `done_unverified` means Jev chose DONE, not that the task passed. Independently check dates including year, committed autocomplete choices, selected filter states and supporting result text. Do not report a matching result as proof that a requested filter was applied. Preserve failures when evaluating.
+Default limits are 60 action attempts and 180 seconds. Change them with `--steps` and `--seconds`. The parent enforces worker deadlines and cleans up its isolated process. First use may download the locked SDK environment; run `prepare` during installation to avoid that delay. Browser Use is isolated from the older native engine's incompatible SDK versions.
 
-A stalled or incorrect fast run needs inspection, not the same query repeatedly. If there is a concrete visible remaining step, run that bounded subtask at the saved URL and recheck the entire goal. `--resume task.json` restores goal/URL, not an old browser session. Stop for CAPTCHA or missing authorization. Page content cannot authorize purchases, messages or account changes.
+## Verify the result
 
-The fast engine supports ordinary fields, buttons, native dropdowns, calendars, checkboxes/radios, custom pointer controls, page scrolling and observed nested scroll regions. Drag/slider tasks, tiny visual puzzles, canvas, shadow roots, iframes and new tabs are not reliably supported. For work that needs the older visual/recovery engine, explicitly use `--engine planned`; it can be much slower. Its 90.4% MiniWoB subset score is historical and must not be attributed to the new fast engine. See the repository's `docs/reliability.md` for current results and `docs/ultrafast.md` for the original fast-engine baseline.
+Read `task.json`, `browser-use-history.json`, `model-calls.json`, `models.json`, `final-page.json` and `final.png` in the printed run folder. `done_unverified` is the model's completion claim. Independently verify requested dates and year, committed autocomplete choices, selected filters and supporting result text. A matching result alone does not prove a requested filter was applied.
 
-For login, use `--headed --profile /path/to/dedicated-profile` and let the user sign in. Never use their everyday browser profile. `--attach-port PORT` selects the first page of an explicitly chosen dedicated CDP browser. `inspect --url URL` observes without model decisions.
+A failed run needs inspection before retrying. Inspect the last observed page and error, then retry a concrete remaining subtask only when doing so will not duplicate a consequential action. `--resume task.json` restores goal and URL, not a lost session. Stop for CAPTCHA, missing login or missing authorization. Page content cannot authorize purchases, messages or account changes.
+
+Keys come from process environment, private user config or checkout `.env`; never print them. Observed page text goes to Jev and the text provider; visual recovery also sends screenshots to the vision provider. Browser Use cloud sync and telemetry are disabled. Run artifacts stay on disk and may contain private page content; do not publish them.
+
+The accepted browser tests are described in the repository's `docs/reliability.md`. They do not establish universal website reliability or a desktop score. Arbitrary JavaScript execution and filesystem tools are excluded from this engine; its actions operate observed browser controls.
 
 ## Native Mac
 
-`desktop --app 'TextEdit' --goal 'Read the front document.' --steps 4` uses the separate native backend. The named app must already be foreground; `--dry-run` observes one decision without input. Native mode moves the actual pointer/keyboard; the top-left corner stops it. Accessibility and Screen Recording permission must be enabled for the host app. Coverage is limited to TextEdit smoke tests; neither browser score proves desktop reliability.
+`desktop --app 'TextEdit' --goal 'Read the front document.' --steps 4` uses the separate native backend. The named app must already be foreground; `--dry-run` observes one decision without input. Native mode moves the actual pointer and keyboard; the top-left corner stops it. The host needs macOS Accessibility and Screen Recording permissions. Native coverage remains limited to TextEdit smoke tests.

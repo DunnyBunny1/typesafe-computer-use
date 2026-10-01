@@ -104,7 +104,7 @@ def no_real_machine(monkeypatch):
     # The browser backend: no Chrome and no process of any kind, nothing over CDP, and no
     # connection except to a server on this machine that the test started itself.
     monkeypatch.setattr(subprocess, "Popen", refuse("subprocess.Popen"))
-    for name in ("system", "posix_spawn", "posix_spawnp"):
+    for name in ("system", "posix_spawn", "posix_spawnp", "killpg"):
         if hasattr(os, name):
             monkeypatch.setattr(os, name, refuse(f"os.{name}"))
     monkeypatch.setattr(cdp, "find_chrome", refuse("cdp.find_chrome"))

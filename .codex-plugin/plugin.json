@@ -1,7 +1,7 @@
 {
   "name": "typesafe-computer-use",
-  "version": "0.2.3",
-  "description": "Fast Jev browser control with an installable skill and inspectable evidence.",
+  "version": "0.3.0",
+  "description": "Browser Use with fast Jev decisions, visual recovery and an installable skill.",
   "author": {
     "name": "Donovan Murray",
     "url": "https://github.com/DunnyBunny1"
@@ -13,7 +13,7 @@
   "interface": {
     "displayName": "Jev Computer Use",
     "shortDescription": "Fast browser workflows with Jev action selection",
-    "longDescription": "A fast Jev browser loop with text writing, bounded recovery hints, completion checks and inspectable evidence. A separate planned engine and bounded native Mac backend remain available.",
+    "longDescription": "Full Browser Use observation and execution, fast Jev decisions and visual recovery. Supports browser forms, tabs, frames and shadow DOM, with a separate bounded native Mac backend.",
     "developerName": "Donovan Murray",
     "category": "Productivity",
     "capabilities": [

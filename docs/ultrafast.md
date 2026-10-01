@@ -16,7 +16,7 @@ Independent checks verify airports, dates decoded from the final Google Flights 
 
 The earlier planned-engine search took **149.103 seconds**, including **129.605 seconds in planner requests** and **6.607 seconds in Jev requests**. These task-loop timings exclude initial browser launch/navigation, host verification and the final user response. The new engine stops at visible results for host verification, whereas the old planner also produced an answer, so this is a practical before/after example rather than a controlled speedup claim.
 
-Development attempts are retained in the [machine-readable summary](../bench/published/2026-10-01-ultrafast/summary.json). Early runs failed on date controls, text-provider errors and an unapplied nonstop filter. One run was interrupted when the user requested closing the visible browser. A matching nonstop itinerary without an applied filter was correctly counted as a failure.
+Development attempts are retained locally; current releases publish prose summaries only. Early runs failed on date controls, text-provider errors and an unapplied nonstop filter. One run was interrupted when the user requested closing the visible browser. A matching nonstop itinerary without an applied filter was correctly counted as a failure.
 
 ## Matched MiniWoB++ comparison
 
@@ -28,7 +28,7 @@ Twelve fixed task families, seed 88008, from MiniWoB++ commit `33c3b4ddef8c6eb67
 | Initial Ultrafast adaptation | 8/12 | 1.58 s | 27.78 s | 5.67 s |
 | Final Ultrafast adaptation | 9/12 | 1.66 s | 164.25 s | 138.50 s |
 
-Use the [raw results and summary](../bench/published/2026-10-01-ultrafast/) for exact values. These are development tasks, not a blind held-out evaluation. One seed and small sample do not establish a general success rate or statistically reliable speed ratio.
+Raw results are retained locally. These are development tasks, not a blind held-out evaluation. One seed and small sample do not establish a general success rate or statistically reliable speed ratio.
 
 Final failures: `search-engine` repeated pagination; `form-sequence-2` claimed completion before submission; `scroll-text` exposed unsupported nested scrolling, stale text retries and a text-provider failure. The last case took **138.5 seconds**: an in-flight provider request can overrun the loop deadline. Thus the lower median does not imply consistently low latency or a large aggregate throughput gain.
 
@@ -38,4 +38,4 @@ The fast engine is suitable for straightforward forms, links and filters, with i
 
 Run `uv run python bench/run_miniwob.py --help` for checkout and output options; choose `--split fast_comparison --mode ultrafast` or `--mode adaptive`. The frozen task list is in [`bench/miniwob-tasks.json`](../bench/miniwob-tasks.json). Run the offline unit suite with `uv run pytest -q`; the live headless control fixture is separate at `bench/check_ultrafast_controls.py`.
 
-Published results include every comparison case and recorded flight attempt. Final source hashes include the JavaScript snapshot implementation. Private raw model traces and screenshots are kept locally rather than published, limiting independent decision-level auditing. There is no official MiniWoB++ submission, OSWorld score, or matched evaluation against Codex computer use.
+Local records include every comparison case and recorded flight attempt. Final source hashes include the JavaScript snapshot implementation. Private raw model traces and screenshots are kept locally rather than published, limiting independent decision-level auditing. There is no official MiniWoB++ submission, OSWorld score, or matched evaluation against Codex computer use.

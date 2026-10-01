@@ -20,11 +20,11 @@ The exact measured Python engine is commit [`5acd74f70418e050812bec68941b79f0a83
 - **Success requires upstream terminal state AND raw reward exactly 1.** A model claiming completion does not pass; partial rewards count as failures. This is raw success, not the upstream time-discounted reward.
 - Latency includes browser launch, inference, actions, evaluation and final screenshot. It is measured wall time on the author's Mac, not a controlled cross-agent speed comparison. Latency summarizes all cases, including failures.
 
-Raw final results, original source-hash manifests and aggregate usage are in [`bench/published/2026-10-01-v9/`](../bench/published/2026-10-01-v9/). They contain no credentials or personal browser sessions. Run screenshots and private raw model logs are not published; this limits independent auditing of individual model decisions.
+Raw benchmark evidence is retained locally and excluded from current Git releases. Historical results are summarized here; historical tags retain files previously published. Current Browser Use results and limits are summarized in [browser reliability](reliability.md).
 
 ### Actual models and cost
 
-Jev `jev-1.13.0` selected actions. Recorded final-batch planner calls used `openai/gpt-5.4-mini` and selectively `openai/gpt-5.4` through OpenRouter; Fireworks `deepseek-v4p1-flash` handled fallback calls. Defaults try direct OpenAI first and use low reasoning; provider availability caused fallback in these runs. Default nano text writing was configured but is not the model recorded for those final fallback calls. Usage by actual model is in `summary.json`.
+Jev `jev-1.13.0` selected actions. Recorded final-batch planner calls used `openai/gpt-5.4-mini` and selectively `openai/gpt-5.4` through OpenRouter; Fireworks `deepseek-v4p1-flash` handled fallback calls. Defaults try direct OpenAI first and use low reasoning; provider availability caused fallback in these runs. Default nano text writing was configured but is not the model recorded for those final fallback calls. Usage by actual model is retained in the local evaluation records.
 
 Costs are token-based estimates using rates recorded during evaluation, not billing receipts. They exclude Codex's own work, native smoke tests, earlier unrecorded work and any failed request usage not returned by a provider. Recorded iteration inference totaled about **$18.04**. Provider/model availability, endpoint behavior and pricing can change.
 
@@ -37,7 +37,7 @@ Costs are token-based estimates using rates recorded during evaluation, not bill
 
 Weaknesses include tiny visual references, shape/color interpretation, some icon choices and budget exhaustion in the synthetic flight form. Both synthetic flight cases remained failures. The successful real Google Flights check below does not override them.
 
-The earlier broad baseline was 63/80. A tuned run reached 79/80 on that broad set, but it is not the final generalization score. Initial testing on additional task families scored 23/36 before repairs. Later tests reused those families. The final 94/104 uses different seeds and a different task mix, so it is not a matched 63/80 → 94/104 comparison. All recorded batch totals, including regressions, are preserved in `summary.json`.
+The earlier broad baseline was 63/80. A tuned run reached 79/80 on that broad set, but it is not the final generalization score. Initial testing on additional task families scored 23/36 before repairs. Later tests reused those families. The final 94/104 uses different seeds and a different task mix, so it is not a matched 63/80 → 94/104 comparison. All recorded batch totals, including regressions, are retained locally.
 
 ## Real tasks and desktop checks
 
