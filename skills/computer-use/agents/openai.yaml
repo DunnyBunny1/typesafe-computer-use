@@ -1,0 +1,4 @@
+interface:
+  display_name: "Computer Use"
+  short_description: "Plan browser and Mac tasks with Jev and LLMs"
+  default_prompt: "Use $computer-use to complete this computer task and verify the result."

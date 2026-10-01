@@ -23,6 +23,14 @@ from .writer_fallback import from_env
 
 
 def credentials():
+    # Explicit process settings win, then an explicit/user config file, then
+    # checkout-local settings. Installed wheels need no writable site-packages.
+    configured = os.environ.get("COMPUTER_USE_ENV_FILE")
+    config = Path(configured).expanduser() if configured else Path.home() / ".config" / "jev-computer-use" / ".env"
+    if configured and not config.is_file():
+        raise FileNotFoundError(f"COMPUTER_USE_ENV_FILE does not exist: {config}")
+    load_dotenv(config)
+    load_dotenv(Path(__file__).resolve().parents[1] / ".env")
     # Load the one TypeSafe credential from the user's existing key file, never
     # arbitrary shell content or every unrelated credential in that file.
     path = Path.home() / ".env"
@@ -31,7 +39,8 @@ def credentials():
             key, _, value = line.partition("=")
             if key.strip() == "TYPESAFE_API_KEY":
                 os.environ.setdefault("TYPESAFE_API_KEY", value.strip().strip("\"'"))
-    load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+    os.environ.setdefault("CLICKER_WRITER_PROVIDERS", "openai,anthropic,fireworks,openrouter")
+    os.environ.setdefault("CLICKER_PLANNER_PROVIDERS", "openai,openrouter,anthropic,fireworks")
 
 
 def doctor():
@@ -66,7 +75,7 @@ def main(argv=None):
     native.add_argument("--steps", type=int, default=12)
     native.add_argument("--handoffs", type=int, default=2)
     native.add_argument("--dry-run", action="store_true")
-    native.add_argument("--out", type=Path, default=Path.home() / "typesafe-benchmark" / "native")
+    native.add_argument("--out", type=Path, default=Path.home() / ".local/share/jev-computer-use/runs/native")
     for name in ("browser", "inspect"):
         p = sub.add_parser(name)
         p.add_argument("--url")
@@ -75,7 +84,7 @@ def main(argv=None):
             "--profile", type=Path, help="Dedicated reusable automation profile; never use your normal browser profile"
         )
         p.add_argument("--headed", action="store_true")
-        p.add_argument("--out", type=Path, default=Path.home() / "typesafe-benchmark" / "tasks")
+        p.add_argument("--out", type=Path, default=Path.home() / ".local/share/jev-computer-use/runs/tasks")
         p.add_argument("--goal", default="Inspect the current page")
         p.add_argument("--steps", type=int, default=60)
         p.add_argument("--seconds", type=float, default=180)

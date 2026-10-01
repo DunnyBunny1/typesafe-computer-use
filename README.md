@@ -1,147 +1,98 @@
-<p align="center">
-  <img src="docs/banner.svg" alt="typesafe-computer-use" width="100%">
-</p>
+# Jev Computer Use
 
-<p align="center">
-  <a href="https://github.com/awlevin/typesafe-computer-use/actions/workflows/ci.yaml"><img alt="CI" src="https://github.com/awlevin/typesafe-computer-use/actions/workflows/ci.yaml/badge.svg"></a>
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
-  <img alt="Python 3.12+" src="https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white">
-  <img alt="macOS, Windows experimental" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20(experimental)-000000">
-  <a href="https://docs.typesafe.ai"><img alt="TypeSafe" src="https://img.shields.io/badge/decisions-TypeSafe%20jev-8b5cf6"></a>
-  <a href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json"></a>
-</p>
+A computer-use engine and installable Codex skill: an LLM plans the task, **Jev selects actions and targets**, and the browser executes them with screenshots and result verification.
 
-**typesafe-computer-use** (jev for short) drives a Mac toward a goal you type in plain English,
-for about a fiftieth of a cent per step. It reads the screen deterministically, asks a small
-classifier which action comes next, and only calls a writing model when a text field genuinely
-needs free text or the classifier has stopped and the screen needs reading.
+This is Donovan Murray's fork of [Aaron Levin's TypeSafe Computer Use](https://github.com/awlevin/typesafe-computer-use), retaining its MIT license and history. It adds adaptive browser planning, provider fallback, control handling repairs, completion verification, and a portable `$computer-use` skill. It does not train a new model.
 
-One idea runs through it: the classifier picks, code decides facts, and the writer only writes
-free text. Anything a model would have to work out (a date, whether a field is focused, whether
-a URL is clean) is computed in code and handed over as state. [VISION.md](VISION.md) says what
-it is for in a dozen lines.
+**Measured:** 94/104 successes (90.4%) on an adapted MiniWoB++ subset, 5.7 seconds median, about $1.32 estimated inference for all 104 cases. These are short browser tasks, not a general desktop success rate or a SOTA claim. [Protocol, failures, costs and reproduction](docs/benchmark.md).
 
-```
-clicker "go to techcrunch and take me to the checkout page for the cheapest tickets to their next upcoming event" --act
-```
+## Install the Codex skill
 
-> **Beta.** This is under heavy development. Expect rough edges, and expect settings and
-> behavior to change between 0.x [releases](https://github.com/awlevin/typesafe-computer-use/releases).
-> It drives your real mouse and keyboard, so start with a dry run.
+Requirements: Python 3.12+, [uv](https://docs.astral.sh/uv/getting-started/installation/), Google Chrome or Chromium, a [TypeSafe](https://typesafe.ai/) API key, and at least one supported LLM API key. The measured configuration used OpenAI models, with provider fallback. macOS is the locally tested platform; Linux browser support is included. Native Windows code is inherited and has not been accepted in this fork.
 
-## Why a classifier
-
-Frontier-model computer use is capable and expensive: every step ships a screenshot and
-waits several seconds for a plan. Most steps do not need a plan. They need one choice
-from a short list, made quickly and cheaply, with a confidence number you can gate on.
-
-[TypeSafe](https://docs.typesafe.ai) sells exactly that: a decision model that answers
-a `Choice` over up to 255 options with a full probability distribution and a calibrated
-confidence, in a few hundred milliseconds, with free output tokens. This project is a
-computer-use loop built around it.
-
-Measured on the same screenshot and goal, one decision each:
-
-| | typesafe (jev) | Claude Opus 5, bare screenshot | multiplier |
-|---|---|---|---|
-| input tokens | 4,882 | 4,785 | same |
-| cost per decision | $0.0002 | $0.032 | 155x cheaper |
-| cost per decision, realistic loop with history | $0.0002 | $0.035 to $0.08 | 170x to 390x cheaper |
-| cost per 12-step task | $0.003 | $0.40 to $0.90 | 130x to 300x cheaper |
-| model latency | 0.13 to 0.38 s | 5.2 s | 14x to 40x faster |
-| end-to-end step, with capture and OCR | about 1.5 s | about 5.5 s | 3.7x faster |
-
-The honest caveat: the big model read the event dates off the pixels and compared them
-unaided. The classifier needed the date parsing described in
-[how a step works](docs/how-a-step-works.md). Every piece of reasoning the frontier model
-does for free has to be rebuilt here as deterministic state.
-
-## Install
-
-macOS 14 or newer, Python 3.12 or newer, [uv](https://docs.astral.sh/uv/). Windows 10 and 11
-are experimental; see [Windows](docs/windows.md).
-
-```
-git clone https://github.com/awlevin/typesafe-computer-use
+```sh
+git clone https://github.com/DunnyBunny1/typesafe-computer-use.git
 cd typesafe-computer-use
-uv sync
-cp .env.example .env     # fill in the keys
+uv sync --frozen
+uv run --frozen python scripts/install_skill.py
 ```
 
-| variable | required | purpose |
-|---|---|---|
-| `TYPESAFE_API_KEY` | yes | every decision |
-| `ANTHROPIC_API_KEY` | no | `type_text`, writer-proposed URLs, and the final answer |
-| `CLICKER_EMAIL` | no | enables the `type_email` action |
-| `CLICKER_BROWSER` | no | defaults to `Google Chrome` |
+Configure keys in the ignored checkout `.env`:
 
-`.env` lives at the repo root and is read by every entry point (`clicker`, `clicker-inspect`).
-To run the writer on another model or endpoint (LM Studio, Ollama, any OpenAI-compatible
-server), see [writer endpoints](docs/writer-endpoints.md).
-
-Grant your terminal **Screen Recording** and **Accessibility** in System Settings >
-Privacy & Security. Without the first, captures are wallpaper. Without the second,
-synthetic clicks are silently dropped, and `--act` refuses to start.
-
-## First run
-
-```
-uv run clicker "open the Playground"                 # dry run: one step, prints what it would do
-uv run clicker "open the Playground" --act           # drives the machine, up to 100 steps
-uv run clicker "log in" --act --steps 20 --delay 3   # longer and slower
-uv run clicker "log in" --act --handoffs 0           # the classifier alone: its first stop ends the run
-uv run clicker-inspect "any goal"                    # 3-2-1, capture, open the annotated screen + payload
+```sh
+cp .env.example .env
+chmod 600 .env
+# Edit .env: set TYPESAFE_API_KEY and OPENAI_API_KEY.
+uv run --frozen computer-use doctor
 ```
 
-Clear the terminal first. It is on screen, so its text is OCR input.
+Keep this checkout and its `.venv` in place: the skill points to that runtime. Installation defaults to `~/.codex/skills/computer-use`, honors `CODEX_HOME`, and accepts `--destination PATH`. Use `--replace` to update an existing skill; its previous files are backed up outside the active skills directory. Start a new Codex conversation if discovery is cached. No separate TypeSafe skill is needed.
 
-To stop a live run, press Ctrl-C in the terminal or slam the mouse into the top-left corner of
-the screen. The loop also stops itself on `done`, low confidence, a stall, or the step limit,
-and the writer then reads the screen and prints the answer. Every run writes
-`runs/<timestamp>/`, so a stall can be [replayed offline](docs/run-folder.md).
+### Try it
 
-## How a step works
+Ask Codex:
 
-1. The screen is read deterministically: Vision OCR on a crop of the frontmost window, plus the
-   labelled controls from the accessibility tree, which sees the icons OCR cannot.
-2. Code adds the facts: the date on any block and how far off it is, the row of a repeated
-   label, the focused field, the app and URL, and the actions already tried on this screen.
-3. One TypeSafe request answers three `Choice`s: which kind of action, which item, which site.
-4. The action runs deterministically, the loop waits, and the next capture is the only witness
-   of what it did.
-5. When the classifier stops, the writer reads the screen and answers, or hands the run back
-   with a focus (one move) or a question for you. It never picks an action.
+> Use $computer-use to find a round-trip flight from JFK to SFO, November 12–16, 2026, for one adult in economy. Apply nonstop only. Report one matching fare, airline, departure time and source link. Verify the dates and filter; do not book anything.
 
-The full walk, with the OCR cost, the tree walk, the action space, and the stop rules, is in
-[how a step works](docs/how-a-step-works.md).
+For a shorter task:
 
-## Benchmark
+> Use $computer-use to open Python's official documentation, navigate to pathlib.Path.mkdir, and explain what parents=True and exist_ok=True do. Include the documentation URL.
 
-jev runs as an agent in [OSWorld](https://github.com/xlang-ai/OSWorld-V2), a benchmark of real
-desktop tasks, beside OSWorld's own GPT agent on the same task. `scripts/osworld setup` fetches
-OSWorld and installs jev beside it; `scripts/osworld run-jev chrome/<task id> --ocr rapidocr`
-runs one task. It needs a Linux host with KVM; see [OSWorld](docs/osworld.md) for that and for
-a one-command machine in Google Cloud.
+Dates, fares and websites change; these are examples, not guaranteed outcomes. [Skill instructions](skills/computer-use/SKILL.md).
 
-## Read more
+## Standalone CLI
 
-- [How a step works](docs/how-a-step-works.md): perception, the three-part decision, the action space, stalls, and the hand-off to the writer
-- [Run folder](docs/run-folder.md): what every run writes, the timing line, and offline replay
-- [Browser backend](docs/browser-backend.md): DOM perception over Chrome DevTools, no OCR, no screen permission
-- [Writer endpoints](docs/writer-endpoints.md): every writer variable, and other models over the Anthropic or OpenAI API
-- [Windows](docs/windows.md): the experimental adapter and how it differs from macOS
-- [OSWorld](docs/osworld.md): setup, the two run commands, results, and the Google Cloud machine
-- [Layout](docs/layout.md): every module and what it owns
-- [Known limits](docs/known-limits.md)
-- [Sandbox](docs/sandbox.md): a Linux computer in a container, for running the agent on a screen that is not yours
+```sh
+uv tool install 'git+https://github.com/DunnyBunny1/typesafe-computer-use.git@v0.2.0.post1'
+computer-use doctor
+computer-use browser --url 'https://docs.python.org/3/library/pathlib.html'   --goal 'Find Path.mkdir and explain parents=True and exist_ok=True with the source URL.'
+```
 
-## Contributing
+For a wheel/tool installation, put keys in `~/.config/jev-computer-use/.env`, export them, or set `COMPUTER_USE_ENV_FILE` to a private file. Process environment takes precedence, followed by that config file and checkout `.env`. Legacy `~/.env` contributes only `TYPESAFE_API_KEY`. Keys are not included in this repository.
 
-Bug reports with a run folder attached are the most useful thing you can send. Before a pull
-request, `uv run ruff check . && uv run ruff format --check .` and `uv run pytest -q` must pass.
-The ground rules, and how to write a scenario for a task the loop cannot do, are in
-[CONTRIBUTING.md](CONTRIBUTING.md).
+The CLI prints a run folder containing `task.json`, `final-page.json`, `final.png` and per-step evidence. Default limits are 60 actions, 24 planning rounds and 180 seconds; an in-flight model request can exceed the time limit. Change them with `--steps`, `--rounds`, and `--seconds`. `--resume task.json` restores the goal and notes, not a lost browser login/session.
 
-## License
+### Packaging
 
-[MIT](LICENSE)
+- Python package / CLI: `typesafe_computer_use`, `computer-use`.
+- Portable skill: `skills/computer-use/`, installed by `scripts/install_skill.py`.
+- Optional Codex plugin manifest: `.codex-plugin/plugin.json`, exposing the same skill. Plugin installation alone does **not** install the Python engine: install the standalone CLI first and put it on the host's PATH. This repository is not listed in a curated marketplace. Avoid installing both copies of the skill.
+- Tagged source and wheel: [releases](https://github.com/DunnyBunny1/typesafe-computer-use/releases). The inherited PyPI package is not this fork; install from this GitHub URL or its release assets.
+
+## How it works
+
+```text
+User goal → LLM subtask plan → Jev action/target → browser input
+                    ↑                              ↓
+              progress + verification ← DOM + screenshot
+```
+
+Easy tasks use a bounded Jev fast path. GPT-5.4 mini at low reasoning handles planning; dense visual tasks or stalls selectively use GPT-5.4. Exact form values bypass extra text generation; free text defaults to GPT-4.1 nano. Fallback tries configured providers only, records the actual model/usage, and disables unavailable endpoints for that run. The final benchmark used OpenRouter's OpenAI models and Fireworks fallback; provider availability affects reproducibility.
+
+Controls include text fields, checkboxes, dropdowns, dates, nested scrolling, sliders, sortable-item dragging, CSS image buttons and SVG shapes. Fixes also cover stale targets, field labels, repeated-action stalls and verification popups.
+
+## Boundaries
+
+Browser mode uses isolated headless Chrome by default. For login, use `--headed --profile /path/to/dedicated-profile` and sign in yourself. Do not point it at your everyday browser profile. `--attach-port` is for an explicitly selected, dedicated single-tab CDP browser.
+
+Native Mac control is available through `computer-use desktop --app TextEdit --goal 'Read the front document.'`. The named app must already be foreground, and the host needs macOS Accessibility and Screen Recording permissions. It moves the real mouse and keyboard. TextEdit has smoke coverage; no OSWorld desktop score is established. The original `clicker` command remains available; see the upstream documentation for its workflow.
+
+Small visual references, iframe/shadow-root traversal, automatic tab switching and arbitrary canvas dragging remain weak or unsupported. CAPTCHA and missing login require user help. Verify consequential results: a model saying “done” is not ground truth. The agent does not provide a complete prompt-injection security boundary.
+
+Page text and screenshots may go to the configured model providers; restrict `CLICKER_PLANNER_PROVIDERS` and `CLICKER_WRITER_PROVIDERS` to control that choice. Run artifacts remain on disk and may contain private page content. Do not publish your `.env`, profiles or run folders.
+
+## Develop and evaluate
+
+```sh
+uv sync --frozen
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest -q
+uv build
+```
+
+Offline tests refuse real desktop input, browser connections and external network access. Live evaluations run separately. See [benchmark reproduction](docs/benchmark.md), [writer configuration](docs/writer-endpoints.md), [browser backend](docs/browser-backend.md), and [upstream OSWorld integration](docs/osworld.md). OSWorld integration is included but was not run for this release.
+
+## Attribution
+
+Original engine by [Aaron Levin](https://github.com/awlevin), powered by [TypeSafe/Jev](https://typesafe.ai/). MiniWoB++ is maintained by the [Farama Foundation](https://github.com/Farama-Foundation/miniwob-plusplus). Benchmark pages are downloaded separately; this fork publishes manifests and results. [MIT license](LICENSE).

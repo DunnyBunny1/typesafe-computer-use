@@ -1,0 +1,319 @@
+{
+  "measured_engine_commit": "5acd74f70418e050812bec68941b79f0a8336e4a",
+  "aggregate": {
+    "n": 104,
+    "passed": 94,
+    "median_seconds": 5.721,
+    "p95_seconds": 31.872,
+    "failures": [
+      {
+        "task": "click-color",
+        "seed": 88006,
+        "pass": false,
+        "goal": "Click on the  colored box.",
+        "outcome": "environment_terminated",
+        "steps": 1,
+        "done": true,
+        "raw_reward": -1,
+        "reward": -1,
+        "total_ms": 3424.6
+      },
+      {
+        "task": "number-checkboxes",
+        "seed": 88006,
+        "pass": false,
+        "goal": "Draw the number \"6\" in the checkboxes using the example on the right and press Submit when finished.",
+        "outcome": "environment_terminated",
+        "steps": 16,
+        "done": true,
+        "raw_reward": -1,
+        "reward": -1,
+        "total_ms": 31871.9
+      },
+      {
+        "task": "find-greatest",
+        "seed": 88006,
+        "pass": false,
+        "goal": "Find and pick the card with the greatest number, then press submit.",
+        "outcome": "environment_terminated",
+        "steps": 5,
+        "done": true,
+        "raw_reward": 0.1,
+        "reward": 0.07654916666666667,
+        "total_ms": 28933.7
+      },
+      {
+        "task": "click-shape",
+        "seed": 88006,
+        "pass": false,
+        "goal": "Click on a small magenta U",
+        "outcome": "environment_terminated",
+        "steps": 1,
+        "done": true,
+        "raw_reward": -1,
+        "reward": -1,
+        "total_ms": 5671.1
+      },
+      {
+        "task": "book-flight-nodelay",
+        "seed": 88006,
+        "pass": false,
+        "goal": "Book the cheapest one-way flight from: WNA to: EAT on 12/02/2016.",
+        "outcome": "round_budget",
+        "steps": 14,
+        "done": false,
+        "raw_reward": 0,
+        "reward": 0,
+        "reason": null,
+        "total_ms": 51444.9
+      },
+      {
+        "task": "click-color",
+        "seed": 88007,
+        "pass": false,
+        "goal": "Click on the  colored box.",
+        "outcome": "environment_terminated",
+        "steps": 1,
+        "done": true,
+        "raw_reward": -1,
+        "reward": -1,
+        "total_ms": 3485.4
+      },
+      {
+        "task": "count-shape",
+        "seed": 88007,
+        "pass": false,
+        "goal": "How many digits are there?",
+        "outcome": "environment_terminated",
+        "steps": 1,
+        "done": true,
+        "raw_reward": -1,
+        "reward": -1,
+        "total_ms": 4265.9
+      },
+      {
+        "task": "click-shape",
+        "seed": 88007,
+        "pass": false,
+        "goal": "Click on a black Q",
+        "outcome": "round_budget",
+        "steps": 12,
+        "done": false,
+        "raw_reward": 0,
+        "reward": 0,
+        "reason": null,
+        "total_ms": 49144.2
+      },
+      {
+        "task": "social-media",
+        "seed": 88007,
+        "pass": false,
+        "goal": "For the user @vitae, click on the \"Share via DM\" button.",
+        "outcome": "environment_terminated",
+        "steps": 2,
+        "done": true,
+        "raw_reward": -1,
+        "reward": -1,
+        "total_ms": 12328.8
+      },
+      {
+        "task": "book-flight-nodelay",
+        "seed": 88007,
+        "pass": false,
+        "goal": "Book the cheapest one-way flight from: MRY to: Twin Falls, ID on 10/12/2016.",
+        "outcome": "round_budget",
+        "steps": 14,
+        "done": false,
+        "raw_reward": 0,
+        "reward": 0,
+        "reason": null,
+        "total_ms": 52551.7
+      }
+    ],
+    "estimated_usd": 1.323867,
+    "unknown_models": [],
+    "tokens": {
+      "jev-1.13.0": {
+        "input": 1520316,
+        "estimated_usd": 0.063853
+      },
+      "openai/gpt-5.4-mini": {
+        "input": 595365,
+        "cached": 0,
+        "output": 37483,
+        "requests": 161,
+        "estimated_usd": 0.615197
+      },
+      "openai/gpt-5.4": {
+        "input": 196866,
+        "cached": 3840,
+        "output": 9951,
+        "requests": 48,
+        "estimated_usd": 0.64239
+      },
+      "accounts/fireworks/models/deepseek-v4p1-flash": {
+        "input": 8543,
+        "cached": 2270,
+        "output": 805,
+        "requests": 21,
+        "estimated_usd": 0.002427
+      }
+    }
+  },
+  "batches": [
+    {
+      "split": "completion_validation",
+      "measured_engine_commit": "5acd74f70418e050812bec68941b79f0a8336e4a",
+      "results_sha256": "b42f6f75511d30b81f0e5bf63b93076ef1120531c0de9483c58e1e1bf79f2004",
+      "manifest_sha256": "90cc32e9bd33d3b2c059758cd1a7d63632dbf6417f7bab0bc73fcce40a1dc8cd"
+    },
+    {
+      "split": "stability_repeat",
+      "measured_engine_commit": "5acd74f70418e050812bec68941b79f0a8336e4a",
+      "results_sha256": "cc2b59e901db4f3499b4508739b2968ae70a0676746a82ec2d183b7a14709eb6",
+      "manifest_sha256": "e198386db217182d4eab4bc074309ef2a07fc83a1ee9f8ea167ebc83f70cb378"
+    }
+  ],
+  "earlier_iterations": [
+    {
+      "batch": "v2-baseline/20261001-054307-planned-broad",
+      "n": 80,
+      "passed": 63,
+      "median_seconds": 3.778,
+      "p95_seconds": 42.48,
+      "estimated_usd": 0.555583
+    },
+    {
+      "batch": "v2-final/20261001-060352-adaptive-broad",
+      "n": 80,
+      "passed": 78,
+      "median_seconds": 3.289,
+      "p95_seconds": 15.582,
+      "estimated_usd": 0.569129
+    },
+    {
+      "batch": "v2-final/20261001-061116-adaptive-unseen",
+      "n": 36,
+      "passed": 23,
+      "median_seconds": 7.992,
+      "p95_seconds": 49.809,
+      "estimated_usd": 0.637619
+    },
+    {
+      "batch": "v3-final/20261001-062858-adaptive-broad",
+      "n": 80,
+      "passed": 76,
+      "median_seconds": 3.791,
+      "p95_seconds": 18.741,
+      "estimated_usd": 0.861472
+    },
+    {
+      "batch": "v3-final/20261001-062859-adaptive-unseen",
+      "n": 36,
+      "passed": 32,
+      "median_seconds": 7.11,
+      "p95_seconds": 31.842,
+      "estimated_usd": 0.561852
+    },
+    {
+      "batch": "v4-final/20261001-063255-adaptive-generalization",
+      "n": 52,
+      "passed": 44,
+      "median_seconds": 4.707,
+      "p95_seconds": 34.79,
+      "estimated_usd": 0.934264
+    },
+    {
+      "batch": "v5-final/20261001-063610-adaptive-broad",
+      "n": 80,
+      "passed": 79,
+      "median_seconds": 3.603,
+      "p95_seconds": 19.616,
+      "estimated_usd": 0.863079
+    },
+    {
+      "batch": "v5-final/20261001-063612-adaptive-unseen",
+      "n": 36,
+      "passed": 33,
+      "median_seconds": 7.826,
+      "p95_seconds": 48.153,
+      "estimated_usd": 0.871297
+    },
+    {
+      "batch": "v5-final/20261001-063754-adaptive-release_validation",
+      "n": 52,
+      "passed": 48,
+      "median_seconds": 5.119,
+      "p95_seconds": 33.36,
+      "estimated_usd": 0.966127
+    },
+    {
+      "batch": "v6-final/20261001-064443-adaptive-broad",
+      "n": 80,
+      "passed": 76,
+      "median_seconds": 4.109,
+      "p95_seconds": 31.468,
+      "estimated_usd": 0.469768
+    },
+    {
+      "batch": "v6-final/20261001-064443-adaptive-final_validation",
+      "n": 52,
+      "passed": 47,
+      "median_seconds": 4.961,
+      "p95_seconds": 28.432,
+      "estimated_usd": 0.643374
+    },
+    {
+      "batch": "v7-final/20261001-064658-adaptive-shipping_validation",
+      "n": 52,
+      "passed": 44,
+      "median_seconds": 5.441,
+      "p95_seconds": 45.232,
+      "estimated_usd": 0.400958
+    },
+    {
+      "batch": "v7-final/20261001-064738-adaptive-broad",
+      "n": 80,
+      "passed": 73,
+      "median_seconds": 4.918,
+      "p95_seconds": 25.405,
+      "estimated_usd": 0.313059
+    },
+    {
+      "batch": "v8-final/20261001-065327-adaptive-stable_validation",
+      "n": 52,
+      "passed": 49,
+      "median_seconds": 6.98,
+      "p95_seconds": 53.023,
+      "estimated_usd": 1.089354
+    },
+    {
+      "batch": "v9-final/20261001-065926-adaptive-completion_validation",
+      "n": 52,
+      "passed": 47,
+      "median_seconds": 5.721,
+      "p95_seconds": 34.503,
+      "estimated_usd": 0.711113
+    },
+    {
+      "batch": "v9-final/20261001-070514-adaptive-stability_repeat",
+      "n": 52,
+      "passed": 47,
+      "median_seconds": 5.568,
+      "p95_seconds": 22.827,
+      "estimated_usd": 0.612755
+    },
+    {
+      "batch": "v5-flight-default-budget/20261001-063752-adaptive-unseen",
+      "n": 3,
+      "passed": 3,
+      "median_seconds": 59.829,
+      "p95_seconds": 65.204,
+      "estimated_usd": 0.39627
+    }
+  ],
+  "estimated_recorded_research_usd": 18.042872,
+  "cost_note": "Recorded request usage at list prices; excludes Codex, native tests, prior-turn work and failed requests without reported usage. Not provider account billing.",
+  "latency_note": "Observed wall time, including browser lifecycle. Some batches overlapped on the same host/API; not a controlled speedup comparison.",
+  "protocol": "Pinned upstream MiniWoB++ terminal and raw reward 1. Adapted 120 seconds, 40 decisions, 12 planner rounds except explicitly named 16-round flight batch. Broad and rerun unseen cases are tuned regression cases. Seeds 88001,88002,88003,88004,88005,88006,88007 were first-use random cases across known task families, on successive frozen versions; they are not interchangeable or an official leaderboard score."
+}

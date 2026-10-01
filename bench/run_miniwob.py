@@ -10,7 +10,6 @@ import argparse
 import base64
 import hashlib
 import json
-import os
 import subprocess
 import time
 from datetime import UTC, datetime
@@ -23,7 +22,7 @@ from typesafe_computer_use.browser.cdp import Chrome
 from typesafe_computer_use.browser.orchestrator import run_task
 from typesafe_computer_use.browser.report import RunFolder
 from typesafe_computer_use.browser.runner import run_goal
-from typesafe_computer_use.config import load_dotenv
+from typesafe_computer_use.computer import credentials
 from typesafe_computer_use.writer import make_writer
 from typesafe_computer_use.writer_fallback import from_env
 
@@ -60,11 +59,7 @@ def main():
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=args.checkout, text=True).strip()
     if commit != manifest["upstream_commit"]:
         raise ValueError("Benchmark checkout does not match frozen manifest")
-    for line in (Path.home() / ".env").read_text().splitlines():
-        key, _, value = line.partition("=")
-        if key.strip() == "TYPESAFE_API_KEY":
-            os.environ.setdefault("TYPESAFE_API_KEY", value.strip().strip("\"'"))
-    load_dotenv(root / ".env")
+    credentials()
     writer = make_writer()
     planner = from_env(planner=True)
     split = manifest[args.split]

@@ -1,7 +1,7 @@
 [project]
 name = "typesafe-computer-use"
-version = "0.2.0"
-description = "Cheap, fast computer use on macOS and Windows: deterministic screen state, a TypeSafe classifier for every decision, a writer model only for free text."
+version = "0.2.0.post1"
+description = "Jev computer use with LLM planning, browser verification, provider fallback and an installable Codex skill."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -41,8 +41,9 @@ dependencies = [
 rapidocr = ["rapidocr==3.9.2", "onnxruntime==1.30.0"]
 
 [project.urls]
-Homepage = "https://github.com/awlevin/typesafe-computer-use"
-Issues = "https://github.com/awlevin/typesafe-computer-use/issues"
+Homepage = "https://github.com/DunnyBunny1/typesafe-computer-use"
+Issues = "https://github.com/DunnyBunny1/typesafe-computer-use/issues"
+Upstream = "https://github.com/awlevin/typesafe-computer-use"
 
 [project.scripts]
 clicker = "typesafe_computer_use.cli:main"

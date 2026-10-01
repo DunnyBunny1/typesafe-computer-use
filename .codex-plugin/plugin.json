@@ -1,0 +1,25 @@
+{
+  "name": "typesafe-computer-use",
+  "version": "0.2.1",
+  "description": "Jev computer use with LLM planning, browser verification and an installable skill.",
+  "author": {
+    "name": "Donovan Murray",
+    "url": "https://github.com/DunnyBunny1"
+  },
+  "homepage": "https://github.com/DunnyBunny1/typesafe-computer-use",
+  "repository": "https://github.com/DunnyBunny1/typesafe-computer-use",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Jev Computer Use",
+    "shortDescription": "Browser workflows with Jev decisions and LLM planning",
+    "longDescription": "A browser-first computer-use skill with bounded planning, provider fallback and inspectable evidence. Native Mac support has limited smoke-test coverage.",
+    "developerName": "Donovan Murray",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": "Use $computer-use to complete a browser task and verify the result."
+  }
+}
