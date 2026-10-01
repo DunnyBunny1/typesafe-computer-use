@@ -224,12 +224,14 @@ def test_a_password_value_never_leaves_the_page(tmp_path):
     assert SECRET not in "\n".join(s.line() for s in result.steps)
 
 
-def test_the_page_script_never_reads_what_was_typed():
-    """The script reads `el.value` once, for a button input's label, and never names a text
-    control after its own contents."""
-    assert INTERACTIVE_JS.count("el.value") == 1
+def test_field_values_are_limited_to_agent_confirmed_text():
+    """Names exclude values; the only extra reads confirm an agent's own write.
+    A real-browser privacy regression lives in bench/check_dom_mapping.py.
+    """
+    assert INTERACTIVE_JS.count("el.value") == 3
     assert "BUTTON_TYPES.has(type) ? el.value" in INTERACTIVE_JS
-    assert "value:" not in INTERACTIVE_JS
+    assert "written_value: !secret && window.__tscuWrittenValues?.has(el)" in INTERACTIVE_JS
+    assert "window.__tscuWrittenValues.get(el) === el.value ? el.value : null" in INTERACTIVE_JS
 
 
 def test_a_credential_field_is_marked_in_what_the_classifier_reads():
@@ -381,6 +383,85 @@ def test_a_password_value_stays_out_of_the_state_when_text_is_collected():
     assert SECRET not in json.dumps([tb.__dict__ for tb in page.text]) and SECRET not in to_json(page)
 
 
+def test_uncertain_action_never_reaches_browser(tmp_path):
+    class Uncertain(FakeTypeSafe):
+        def system_one(self, **kwargs):
+            response = super().system_one(**kwargs)
+            response.answers["kind"] = choice("press_enter", 0.2)
+            return response
+
+    browser = FakeBrowser(login_page())
+    result, _ = run(browser, Uncertain(("press_enter", None)), tmp_path, steps=1)
+    assert browser.inputs == []
+    assert result.outcome == "low_confidence(0.20)"
+
+
+def test_progress_resets_wait_stall_counter(tmp_path, monkeypatch):
+    from typesafe_computer_use.browser import act
+
+    browser = FakeBrowser(login_page())
+    page = perceive(browser)
+    changed = iter([False, True, False])
+    monkeypatch.setattr(act, "observe_until_changed", lambda *args, **kwargs: (page, 0, next(changed)))
+    client = FakeTypeSafe(("wait", None), ("scroll_down", None), ("wait", None), ("done", None))
+    result, _ = run(browser, client, tmp_path, steps=4)
+    assert result.outcome == "done"
+
+
+def test_completion_estimate_does_not_override_a_required_action(tmp_path):
+    class Optimistic(FakeTypeSafe):
+        def system_one(self, **kwargs):
+            response = super().system_one(**kwargs)
+            response.answers["satisfied"] = NoulAnswer(noul=0.8)
+            return response
+
+    result, _ = run(FakeBrowser(login_page()), Optimistic(("wait", None)), tmp_path, steps=1)
+    assert result.outcome == "max_steps"
+
+
+def test_done_is_reconsidered_if_results_change_during_final_observation(monkeypatch):
+    from typesafe_computer_use.browser import act
+
+    browser = FakeBrowser(login_page())
+    page = perceive(browser)
+    changed = iter([True, False])
+    monkeypatch.setattr(act, "observe_until_changed", lambda *args, **kwargs: (page, 0, next(changed)))
+    result = run_goal(browser, FakeTypeSafe(), "Read the results", max_steps=2, verbose=False)
+    assert [step.action for step in result.steps] == ["wait", "done"]
+    assert result.outcome == "done"
+
+
+def test_typing_cannot_fall_back_from_a_button_to_an_unrelated_field():
+    page = perceive(FakeBrowser(login_page()))
+    target, why = typing_target(page, 2)
+    assert target is None and why == "chosen element is not a text field"
+
+
+def test_typing_refuses_a_covered_field():
+    raw = login_page()
+    raw["items"][0]["covered"] = True
+    target, why = typing_target(perceive(FakeBrowser(raw)), 0)
+    assert target is None and why == "covered_field"
+
+
+def test_low_confidence_handoff_preserves_goal_and_jev_decides_again(tmp_path):
+    class UncertainOnce(FakeTypeSafe):
+        def system_one(self, **kwargs):
+            response = super().system_one(**kwargs)
+            if len(self.requests) == 1:
+                response.answers["kind"] = choice("click", 0.2)
+            return response
+
+    browser = FakeBrowser(login_page())
+    client = UncertainOnce(("click", "0"), ("done", None))
+    writer = FakeWriter({"blocked": False, "focus": "Locate the form's username field"})
+    result, _ = run(browser, client, tmp_path, writer=writer, steps=2)
+    assert result.outcome == "done"
+    assert browser.inputs == []
+    assert client.requests[1]["state"]["goal"] == "sign in as alice"
+    assert client.requests[1]["state"]["next_subgoal"] == "Locate the form's username field"
+
+
 def test_the_page_script_never_collects_what_was_typed_or_drafted():
     """The text pass skips text controls, textbox roles and editable regions, so a field's
     contents or an unsent contenteditable draft cannot leave the page as page text. These
@@ -390,5 +471,5 @@ def test_the_page_script_never_collects_what_was_typed_or_drafted():
     for part in ("textarea", "select", "[contenteditable]", "'textbox'", "'searchbox'", "'combobox'"):
         assert part in skip
     assert "p.isContentEditable || p.closest(SKIP)" in js
-    # Still exactly one `.value` read in the whole script: a button input's own label.
-    assert re.findall(r"\.value\b", js) == [".value"]
+    # The text pass itself never reads field values, including agent-written text.
+    assert not re.findall(r"\.value\b", js.split("const SKIP = ", 1)[1])

@@ -84,6 +84,13 @@ def test_perceive_honours_budget():
     assert len(perceive(session, budget=10).items) == 10
 
 
+def test_dialog_controls_are_not_crowded_out_by_covered_background():
+    items = [element_dict(i, f"behind overlay {i}", covered=True) for i in range(130)]
+    items.append(element_dict(130, "Done", tag="button"))
+    page = perceive(StubSession([page_dict(items=items)]), budget=120)
+    assert any(e.index == 130 and e.name == "Done" for e in page.items)
+
+
 def test_element_label_carries_the_context_that_matters():
     e = Element(0, "a", "", "Docs", 5, 5, 40, 20, True, True, "https://x.test/docs")
     label = e.label()
@@ -134,11 +141,17 @@ def test_no_click_when_there_is_nothing_to_click():
     assert "click" not in available_actions(empty)
 
 
-def test_action_terminators_always_present():
+def test_action_terminators_present_when_idle():
     empty = perceive(StubSession([page_dict(items=[])]))
     actions = available_actions(empty)
     for key in ("done", "none", "wait"):
         assert key in actions
+
+
+def test_loading_page_cannot_offer_done():
+    page = perceive(StubSession([{**page_dict(items=[]), "busy": True}]))
+    actions = available_actions(page)
+    assert "done" not in actions and "wait" in actions
 
 
 def test_option_count_stays_under_the_api_limit():

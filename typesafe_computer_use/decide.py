@@ -263,9 +263,7 @@ def verify_typed(client: TypeSafeClient, goal: str, field_before: Field, typed: 
         "field": field_before.summary(),
         "text_typed": typed,
         "field_value_now": field_after.value[:300] if field_after else None,
-        "field_still_focused": bool(
-            field_after and field_after.role == field_before.role and field_after.label == field_before.label
-        ),
+        "same_field": bool(field_after and field_after.role == field_before.role and field_after.label == field_before.label),
     }
     question = Noul(
         instructions=(

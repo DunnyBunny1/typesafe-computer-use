@@ -66,7 +66,7 @@ def capture(
     with phase(timing, "field"):
         field = None if replay else desktop.focused_field()
     with phase(timing, "url"):
-        page_url = url if url is not None else (None if replay else desktop.browser_url(browser))
+        page_url = url if url is not None else (None if replay or frontmost != browser else desktop.browser_url(browser))
     return Screen(image=image, scale=scale, app=frontmost, field=field, url=page_url, pid=pid, window=window)
 
 

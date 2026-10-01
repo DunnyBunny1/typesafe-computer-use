@@ -354,3 +354,20 @@ def test_refused_restore_has_no_keyboard_fallback(monkeypatch):
     monkeypatch.setattr(desktop, "ax_set_value", lambda *a: False)
     monkeypatch.setattr(desktop, "clear_field", lambda: pytest.fail("must not clear the current focus"))
     assert not actions.restore_field(field(ref=object()), "new query")
+
+
+def test_verification_reads_original_element_after_focus_moves(screen, monkeypatch):
+    original = field(ref=object(), value="")
+    monkeypatch.setattr(actions, "compose_text", lambda *a: Fill("hello"))
+    monkeypatch.setattr(actions, "fill_field", lambda *a: "via accessibility")
+    monkeypatch.setattr(actions.time, "sleep", lambda *a: None)
+    monkeypatch.setattr(desktop, "focused_field", lambda: pytest.fail("do not read the new focus"))
+    monkeypatch.setattr(desktop, "ax_value", lambda ref: "hello" if ref is original.ref else None)
+
+    def verify(client, goal, before, text, after):
+        assert after.ref is original.ref and after.value == text == "hello"
+        return 1.0
+
+    monkeypatch.setattr(actions, "verify_typed", verify)
+    result = actions._type_text(None, replace(screen, field=original), [], context(object()))
+    assert "verified 1.00" in result

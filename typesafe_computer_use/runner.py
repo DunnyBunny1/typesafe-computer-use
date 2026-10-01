@@ -54,6 +54,7 @@ class RunConfig:
     handoffs: int = DEFAULT_HANDOFFS  # stops the writer may send the classifier back from; 0 makes every stop final
     image: Path | None = None  # replay a saved capture (never acts)
     app: str | None = None  # frontmost app to report during replay
+    require_app: str | None = None  # stop if the user leaves this task's app
     url: str | None = None  # browser URL to report during replay
     # Start each capture's OCR on a thread of its own while the capture asks for the app, window,
     # field, and URL (see `OcrCache.read_ahead`). Worth it where those questions are slow, as over an
@@ -250,6 +251,7 @@ def review(cfg: RunConfig, ctx: Context, state: RunState, stopped: str, can_ask:
     """
     if state.view is None:
         desktop.check_abort()
+        check_app_scope(cfg)
         screen = capture(cfg.image, cfg.app, cfg.url, ctx.browser)
         screen.image.save(cfg.out / "answer-raw.png")
         state.view = (screen, perceive(screen, MAX_OPTIONS, cfg.goal))
@@ -283,6 +285,7 @@ def earlier_screens(state: RunState, final: Signature, budget: int = EARLIER_LIN
 
 def run_step(cfg: RunConfig, ctx: Context, state: RunState, step: int, log: Log) -> bool:
     desktop.check_abort()
+    check_app_scope(cfg)
     timing: dict[str, float] = {}
     started = time.perf_counter()
     cache = None if cfg.replay else state.ocr_cache
@@ -362,11 +365,19 @@ def resolve(
         return False
 
     with phase(timing, "act"):
+        check_app_scope(cfg)
         what = perform(decision, screen, items, ctx)
     state.view = None
     state.history.append(what)
     log(f"  did: {what}")
     return not repeating(state, what, decision.kind.choice == "wait", log)
+
+
+def check_app_scope(cfg: RunConfig) -> None:
+    if cfg.require_app and not cfg.replay:
+        app, _ = desktop.frontmost_app_and_pid()
+        if app != cfg.require_app:
+            raise Abort(f"foreground left {cfg.require_app}; no further input")
 
 
 def screen_moved(state: RunState, screen: Screen, items: list[Item], log: Log) -> bool:

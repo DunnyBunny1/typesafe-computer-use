@@ -22,8 +22,8 @@ class OpenAIWriter:
     endpoint that refuses it.
     """
 
-    def __init__(self, base_url: str, api_key: str):
-        self._client = openai.OpenAI(base_url=base_url, api_key=api_key)
+    def __init__(self, base_url: str, api_key: str, **client_options):
+        self._client = openai.OpenAI(base_url=base_url, api_key=api_key, **client_options)
         self.base_url = self._client.base_url
         self.messages = SimpleNamespace(create=self._create)
         self._formats = list(RESPONSE_FORMATS)  # those this endpoint has not refused yet
@@ -102,7 +102,12 @@ def _chat_message(message: dict) -> dict:
             parts.append({"type": "text", "text": block["text"]})
         elif block["type"] == "image":
             source = block["source"]
-            parts.append({"type": "image_url", "image_url": {"url": f"data:{source['media_type']};base64,{source['data']}"}})
+            parts.append(
+                {
+                    "type": "image_url",
+                    "image_url": {"url": f"data:{source['media_type']};base64,{source['data']}", "detail": "high"},
+                }
+            )
         else:
             raise ValueError(f"no Chat Completions form for a {block['type']!r} block")
     return {"role": message["role"], "content": parts}

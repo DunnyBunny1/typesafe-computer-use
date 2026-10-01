@@ -251,6 +251,7 @@ def cmd_replay(args: argparse.Namespace) -> int:
             history=step["history"],
             can_write=step["can_write"],
             model=args.model,
+            guidance=step["state"].get("next_subgoal") or "",
         )
 
     if step["state"] and decision.state != step["state"]:

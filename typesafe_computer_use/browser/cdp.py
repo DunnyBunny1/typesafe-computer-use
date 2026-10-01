@@ -192,7 +192,8 @@ class Session:
             {"expression": expression, "returnByValue": True, "awaitPromise": await_promise},
         )
         if "exceptionDetails" in result:
-            raise CDPError(f"JS error: {result['exceptionDetails'].get('text')}")
+            details = result["exceptionDetails"]
+            raise CDPError(f"JS error: {(details.get('exception') or {}).get('description') or details.get('text')}")
         return (result.get("result") or {}).get("value")
 
     def close(self) -> None:

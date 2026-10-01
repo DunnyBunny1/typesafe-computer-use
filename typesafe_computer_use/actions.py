@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import time
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 from typesafe_sdk import TypeSafeClient
 
@@ -192,7 +192,14 @@ def _type_text(decision, screen: Screen, items, ctx: Context) -> str:
         desktop.press("return")
         return f"typed {text!r} into {screen.field.label!r} {how} and pressed Return"
     time.sleep(0.3)
-    p = verify_typed(ctx.typesafe, ctx.goal, screen.field, text, desktop.focused_field())
+    # A user/app can move focus during the model call. Verify the element we
+    # actually wrote, not an unrelated newly focused field.
+    if screen.field.ref is not None:
+        value = desktop.ax_value(screen.field.ref)
+        after = replace(screen.field, value=value) if value is not None else None
+    else:
+        after = desktop.focused_field()
+    p = verify_typed(ctx.typesafe, ctx.goal, screen.field, text, after)
     if p < VERIFY_THRESHOLD:
         recovery = "restored previous value" if restore_field(screen.field, text) else "could not safely restore previous value"
         return f"typed {text!r} into {screen.field.label!r} {how} but verification failed ({p:.2f}); {recovery}"

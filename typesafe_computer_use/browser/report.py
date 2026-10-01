@@ -72,6 +72,8 @@ class RunFolder:
                     "vw": page.vw,
                     "vh": page.vh,
                     "scroll_y": page.scroll_y,
+                    "scroll_max": page.scroll_max,
+                    "busy": page.busy,
                     "can_scroll": page.can_scroll,
                     "history_len": page.history_len,
                     "element_count": len(page.items),
@@ -165,6 +167,11 @@ def page_from_elements(data: dict) -> Page:
             href=str(it.get("href", "")),
             field=bool(it.get("field", False)),
             secret=bool(it.get("secret", False)),
+            focused=bool(it.get("focused", False)),
+            options=list(it.get("options") or []),
+            scroll_y=int(it.get("scroll_y", 0)),
+            scroll_max=int(it.get("scroll_max", 0)),
+            written_value=it.get("written_value"),
         )
         for it in data.get("items", [])
     ]
@@ -190,6 +197,8 @@ def page_from_elements(data: dict) -> Page:
         history_len=int(data.get("history_len", 1)),
         field_count=sum(1 for e in items if e.typeable),
         scroll_y=int(data.get("scroll_y", 0)),
+        scroll_max=int(data.get("scroll_max", 0)),
+        busy=bool(data.get("busy", False)),
         candidates=int(data.get("candidates", len(items))),
         below_fold=int(data.get("below_fold", 0)),
         text=text,
